@@ -161,14 +161,6 @@
             </div>
         </section>
 
-        <section id="banner" class="my-5 py-5">
-            <div class="container">
-                <h4>MID SEASON'S SALE</h4>
-                <h1>Autumn Collection<br>UP TO 20% OFF</h1>
-                <button class="text-uppercase">Show now</button>
-            </div>
-        </section>
-
         <section id="clothes" class="my-5">
             <div class="container text-center mt-5 py-5">
                 <h3>Dresses & Jackets</h3>
@@ -176,7 +168,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur</p>
             </div>
             <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
+                <div class="product text-center col-lg-4 col-md-4 col-12">
                     <img class="img-fluid mb-3" src="img/clothes/1.jpg" alt="">
                     <div class="star">
                         <i class="fas fa-star"></i>
@@ -189,7 +181,7 @@
                     <h4 class="p-price">$92.00</h4>
                     <button class="buy-btn">Buy Now</button>
                 </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
+                <div class="product text-center col-lg-4 col-md-4 col-12">
                     <img class="img-fluid mb-3" src="img/clothes/2.jpg" alt="">
                     <div class="star">
                         <i class="fas fa-star"></i>
@@ -202,7 +194,7 @@
                     <h4 class="p-price">$92.00</h4>
                     <button class="buy-btn">Buy Now</button>
                 </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
+                <div class="product text-center col-lg-4 col-md-4 col-12">
                     <img class="img-fluid mb-3" src="img/clothes/3.jpg" alt="">
                     <div class="star">
                         <i class="fas fa-star"></i>
@@ -215,21 +207,6 @@
                     <h4 class="p-price">$92.00</h4>
                     <button class="buy-btn">Buy Now</button>
                 </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-3" src="img/clothes/4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Sport Boots</h5>
-                    <h4 class="p-price">$92.00</h4>
-                    <button class="buy-btn">Buy Now</button>
-                </div>
-
-
             </div>
         </section>
 
@@ -372,8 +349,6 @@
                     <ul class="text-uppercase list-unstyled">
                         <li><a href="#">men</a></li>
                         <li><a href="#">women</a></li>
-                        <li><a href="#">boys</a></li>
-                        <li><a href="#">girls</a></li>
                         <li><a href="#">new arrivals</a></li>
                         <li><a href="#">shoes</a></li>
                         <li><a href="#">cloths</a></li>
@@ -383,7 +358,7 @@
                     <h5 class="pb-2">Contact Us</h5>
                     <div>
                         <h6 class="text-uppercase">Address</h6>
-                        <p>123, Main Street, Your City</p>
+                        <p>123, Ha Noi, Vietnam</p>
                     </div>
                     <div>
                         <h6 class="text-uppercase">Phone</h6>
@@ -411,7 +386,7 @@
                         <img src="img/payment.png" alt="">
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 text-nowrap mb-2">
-                        <p>Copyright ©2021 All Rights Reserved</p>
+                        <p>Copyright ©2025 All Rights Reserved</p>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
