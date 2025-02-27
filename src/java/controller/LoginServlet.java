@@ -4,9 +4,9 @@ import dal.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-//import dal.DAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,22 +28,42 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String u = request.getParameter("user");
         String p = request.getParameter("pass");
+        String r = request.getParameter("remember");
+
+        // Tao 3 cookies: username, pass, remember
+        Cookie cu = new Cookie("cuser", u);
+        Cookie cp = new Cookie("cpass", p);
+        Cookie cr = new Cookie("cremember", r);
+        if (r != null) {
+            cu.setMaxAge(60 * 60 * 24 * 30);
+            cp.setMaxAge(60 * 60 * 24 * 30);
+            cr.setMaxAge(60 * 60 * 24 * 30);
+        } else {
+            cu.setMaxAge(0);
+            cp.setMaxAge(0);
+            cr.setMaxAge(0);
+        }
+        response.addCookie(cu);
+        response.addCookie(cp);
+        response.addCookie(cr);
+
         DAO d = new DAO();
         Admin a = d.check(u, p);
         if (a == null) {
-//             Chua co user nay
+            // Chua co user nay
             request.setAttribute("error", "Invalid username or password.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-//             Co user nay
+            // Co user nay
             session.setAttribute("account", a);
-            // role = 1 -> admin
-            if (a.getRole() == 1) {
-                request.getRequestDispatcher("admin.jsp").forward(request, response);
-            } else { // role = 0 -> user
-                request.getRequestDispatcher("home.jsp").forward(request, response);
-            }
-            response.sendRedirect("home");
+            // // role = 1 -> admin
+            // if (a.getRole() == 1) {
+            // request.getRequestDispatcher("admin.jsp").forward(request, response);
+            // } else { // role = 0 -> user
+            // request.getRequestDispatcher("home.jsp").forward(request, response);
+            // }
+            response.sendRedirect("home.jsp");
         }
+
     }
 }
