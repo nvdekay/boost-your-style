@@ -26,7 +26,7 @@ public class UpdateServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
