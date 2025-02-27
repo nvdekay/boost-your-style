@@ -10,6 +10,7 @@
         <url-pattern>/add</url-pattern>
         <url-pattern>/update.jsp</url-pattern>
         <url-pattern>/update</url-pattern>
-        <url-pattern>/delete</url-pattern> 
+        <url-pattern>/delete</url-pattern>
+        <url-pattern>/home.jsp</url-pattern>
     </filter-mapping>
 </web-app>
