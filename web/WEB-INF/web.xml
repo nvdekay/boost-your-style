@@ -12,5 +12,6 @@
         <url-pattern>/update</url-pattern>
         <url-pattern>/delete</url-pattern>
         <url-pattern>/home.jsp</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
