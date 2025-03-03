@@ -46,18 +46,13 @@
 
         <!-- Added Google Login Button -->
         <div class="input-submit" style="margin-top: 15px;">
-            <a href="http://localhost:8080/boostyourstyle/home
-            client_id=917806765779-o08tsnm85u9o6s9i06jimg9hh5irs85u.apps.googleusercontent.com&
-            redirect_uri=YOUR_REDIRECT_URI&
-            response_type=code&
-            scope=email%20profile%20openid&
-            access_type=offline
-            "
+            <a href="https://accounts.google.com/o/oauth2/auth?client_id=917806765779-o08tsnm85u9o6s9i06jimg9hh5irs85u.apps.googleusercontent.com&redirect_uri=http://localhost:8080/boostyourstyle/home&response_type=code&scope=email%20profile%20openid&access_type=offline"
                class="submit-btn google-btn"
                style="background-color: #fff; color: #000; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; gap: 10px;">
                 <img src="https://www.google.com/favicon.ico" alt="Google" style="width: 20px; height: 20px;">
                 Login with Google
             </a>
+
         </div>
 
         <div class="sign-up-link">
