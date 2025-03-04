@@ -46,11 +46,13 @@
                             </li>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-dark" type="submit" style="margin-left: 10px;">Search</button>
+                                <button class="btn btn-outline-dark" type="submit"
+                                    style="margin-left: 10px;">Search</button>
                             </form>
 
                     </div>
                 </div>
+                <a class="btn btn-outline-dark" type="submit" style="margin-left: 10px;">Login</a>
             </nav>
 
             <section id="home">
