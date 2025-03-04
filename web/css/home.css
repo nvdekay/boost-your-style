@@ -275,3 +275,7 @@ button:hover {
 #banner a {
   background-color: #fb774b;
 }
+
+html {
+  scroll-behavior: smooth;
+}

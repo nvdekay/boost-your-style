@@ -42,3 +42,7 @@ footer .copyright a:hover {
     color: #fff;
     background-color: #fb774b;
 }
+
+html {
+    scroll-behavior: smooth;
+}

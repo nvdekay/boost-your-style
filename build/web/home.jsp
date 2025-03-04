@@ -32,16 +32,16 @@
                             <a class="nav-link" href="home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Clothes</a>
+                            <a class="nav-link" href="#clothes">Clothes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shoes</a>
+                            <a class="nav-link" href="#shoes">Shoes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Accessories</a>
+                            <a class="nav-link" href="#watches">Watches</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
+                            <a class="nav-link" href="#footer">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <i class="fa fa-search nav-icon" aria-hidden="true"></i>
@@ -104,7 +104,6 @@
             <div class="container text-center mt-5 py-5">
                 <h3>Dresses & Jackets</h3>
                 <hr class="mx-auto">
-                <p>Lorem ipsum dolor sit amet consectetur</p>
             </div>
             <div class="row mx-auto container-fluid">
                 <div class="product text-center col-lg-4 col-md-4 col-12">
@@ -154,7 +153,6 @@
             <div class="container text-center mt-5 py-5">
                 <h3>Running Shoes</h3>
                 <hr class="mx-auto">
-                <p>Lorem ipsum dolor sit amet consectetur</p>
             </div>
             <div class="row mx-auto container-fluid">
                 <div class="product text-center col-lg-3 col-md-4 col-12">
@@ -219,7 +217,6 @@
             <div class="container text-center mt-5 py-5">
                 <h3>Best Watches</h3>
                 <hr class="mx-auto">
-                <p>Lorem ipsum dolor sit amet consectetur</p>
             </div>
             <div class="row mx-auto container-fluid">
                 <div class="product text-center col-lg-3 col-md-4 col-12">
