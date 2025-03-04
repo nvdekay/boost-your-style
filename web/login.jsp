@@ -44,7 +44,7 @@
             <label for="submit">Sign In</label>
         </div>
 
-        <!-- Added Google Login Button -->
+        <!-- Added Google Login -->
         <div class="input-submit" style="margin-top: 15px;">
             <a href="https://accounts.google.com/o/oauth2/auth?client_id=917806765779-o08tsnm85u9o6s9i06jimg9hh5irs85u.apps.googleusercontent.com&redirect_uri=http://localhost:8080/boostyourstyle/home&response_type=code&scope=email%20profile%20openid&access_type=offline"
                class="submit-btn google-btn"
