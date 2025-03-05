@@ -52,7 +52,20 @@
 
                     </div>
                 </div>
-                <a class="btn btn-outline-dark" type="submit" style="margin-left: 10px;">Login</a>
+                <c:if test="${sessionScope.account!=null}">
+                    <!-- ||
+                    <a href="infor">
+                        User Info
+                    </a> -->
+                    <a class="btn btn-outline-dark btn-login" type="submit" href="logout">
+                        Logout
+                    </a>
+                    &nbsp;&nbsp;&nbsp;
+                    <span style="color:red">[ ${sessionScope.account.username} ]</span>
+                </c:if>
+                <c:if test="${sessionScope.account == null}">
+                    <a class="btn btn-outline-dark btn-login" type="submit" href="login">Login</a>
+                </c:if>
             </nav>
 
             <section id="home">
