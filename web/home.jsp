@@ -72,7 +72,6 @@
                 <div class="container">
                     <h5>NEW ARRIVALS</h5>
                     <h1><span>Best Price</span> This Year</h1>
-                    <button>Shop Now</button>
                 </div>
             </section>
 
