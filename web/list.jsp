@@ -11,13 +11,13 @@
         <script>
             function setCheck(obj) {
                 var fries = document.getElementsByName('cidd');
-                if((obj.id == 'c0') && (fries[0].checked == true)) {
-                    for(var i = 1; i < fries.length; i++) {
+                if ((obj.id == 'c0') && (fries[0].checked == true)) {
+                    for (var i = 1; i < fries.length; i++) {
                         fries[i].checked = false;
                     }
                 } else {
-                    for(var i = 0; i < fries.length; i++) {
-                        if(fries[i].checked == true) {
+                    for (var i = 0; i < fries.length; i++) {
+                        if (fries[i].checked == true) {
                             fries[0].checked = false;
                             break;
                         }
@@ -49,8 +49,10 @@
                 </ul>
             </div>
 
+
             <div id="content">
                 <div id="tab1">
+                    <!-- Ten hang -->
                     <c:set var="chid" value="${requestScope.chid}" />
                     <h5 style="color: chocolate;">TEN HANG</h5>
                     <hr style="border-top: 1px solid chocolate;"/>
@@ -60,8 +62,23 @@
                             <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId() == cid? "checked" : "" } value="${cat.get(i).getId()}" ${chid[i+1]? "checked:" : "" } onclick="setCheck(this)"/>${cat.get(i).getName()}<br/>
                         </c:forEach>
                     </form>
+
+                    <!-- Muc gia -->
+                    <h5>MUC GIA</h5>
+                    <hr style="border-top: 1px solid chocolate;"/>
+                    <c:set var="pp" value="${requestScope.pp}" />
+                    <c:set var="pb" value="${requestScope.pb}" />
+                    <form action="home1" id="f2">
+                        <input type="checkbox" id="g0" name="price" ${pb[0]? "checked" : "" } value="0" onclick="setCheck1(this)"/>All<br/>
+                        <c:forEach begin="0" end="${pp.length - 1}" var="i">
+                            <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}" onclick="setCheck1(this)"/>${pp[i]}<br/>
+                        </c:forEach>
+                    </form>
+                            
                 </div>
             </div>
+
+
 
         </div>
     </body>
