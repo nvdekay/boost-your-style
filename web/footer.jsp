@@ -7,6 +7,7 @@
         <title>Footer Page</title>
     </head>
     <body>
+        <!-- FOOTER -->
         <footer class="mt-5 py-5" id="footer">
             <div class="row container mx-auto pt-5">
                 <div class="footer-one col-lg-3 col-md-6 col-12">

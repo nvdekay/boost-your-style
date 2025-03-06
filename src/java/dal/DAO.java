@@ -93,4 +93,29 @@ public class DAO extends DBContext {
         }
         return list;
     }
+
+    public List<Product> getOldProducts() {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT TOP 3 * FROM Products ORDER BY releaseDate ASC";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("id"));
+                p.setName(rs.getString("name"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setPrice(rs.getDouble("price"));
+                p.setReleaseDate(rs.getString("releaseDate"));
+                p.setDescribe(rs.getString("describe"));
+                p.setImage(rs.getString("image"));
+                Category c = getCategoryById(rs.getInt("cid"));
+                p.setCategory(c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 }
