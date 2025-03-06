@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="./css/header.css">
+        <link rel="stylesheet" href="./css/list.css">
         <title>JSP Page</title>
     </head>
 
@@ -22,10 +23,13 @@
                 <c:set var="cat" value="${requestScope.data}" />
                 <c:set var="cid" value="${requestScope.cid}" />
                 <ul class="menu">
-                    <li><a href="home1" class="active">All</a></li>
+                    <li><a href="home1" class="${cid == 0 ? " active" : "" }" href="home1?cid=${0}">All</a></li>
+                    <c:forEach items="${cat}" var="c">
+                        <li><a href="home1?cid=${c.id}" class="${cid == c.id ? " active" : "" }">${c.name}</a></li>
+                    </c:forEach>
                 </ul>
             </div>
-            
+
         </div>
     </body>
 

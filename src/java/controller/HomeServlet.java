@@ -49,7 +49,7 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("news", news);
         request.setAttribute("olds", olds);
         request.setAttribute("chid", chid);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
     @Override

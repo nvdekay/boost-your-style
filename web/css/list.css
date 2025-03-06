@@ -1,0 +1,26 @@
+ul.menu li a {
+    margin: 10px;
+    padding-left: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    position: relative;
+}
+
+ul.menu li a:hover {
+    color: #fb774b;
+}
+
+ul.menu li a.active {
+    color: #fb774b;
+}
+
+#content {
+    margin-left: 20px;
+    width: 100%;
+}
+
+#tab1 {
+    width: 15%;
+    float: left;
+}
