@@ -70,7 +70,7 @@
                     <c:set var="pb" value="${requestScope.pb}" />
                     <form action="home1" id="f2">
                         <input type="checkbox" id="g0" name="price" ${pb[0]? "checked" : "" } value="0" onclick="setCheck1(this)"/>All<br/>
-                        <c:forEach begin="0" end="${pp.length - 1}" var="i">
+                        <c:forEach begin="0" end="${3}" var="i">
                             <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}" onclick="setCheck1(this)"/>${pp[i]}<br/>
                         </c:forEach>
                     </form>
