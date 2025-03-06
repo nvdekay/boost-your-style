@@ -74,12 +74,28 @@
                             <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}" onclick="setCheck1(this)"/>${pp[i]}<br/>
                         </c:forEach>
                     </form>
-                            
+                </div>
+
+                <div id="tab2">
+                    <c:set var="news" value="${requestScope.news}" />
+                    <c:if test="${news != null}">
+                        <h4>Dien thoai moi</h4>
+                        <ul class="item">
+                            <c:forEach items="${news}" var="p">
+                                <li>
+                                    <a href="#">
+                                        <img src="${p.image}" width="100px" height="100px"/>
+                                        <p>${p.name}</p>
+                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                        <hr/>
+                    </c:if>
                 </div>
             </div>
-
-
-
         </div>
     </body>
 

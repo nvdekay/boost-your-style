@@ -1,26 +1,189 @@
-ul.menu li a {
-    margin: 10px;
-    padding-left: 0px;
+/* Tổng thể trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper chính */
+.wrapper {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Thanh tìm kiếm */
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.top-nav form {
+    display: flex;
+    align-items: center;
+}
+
+.top-nav input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.top-nav button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: chocolate;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.top-nav button:hover {
+    background: #b5651d;
+}
+
+/* Menu danh mục */
+#menu_tab {
+    background: #343a40;
+    padding: 10px 0;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu a {
     text-decoration: none;
-    text-align: center;
-    color: black;
-    position: relative;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: 0.3s;
 }
 
-ul.menu li a:hover {
-    color: #fb774b;
+.menu a:hover, .menu a.active {
+    background: chocolate;
 }
 
-ul.menu li a.active {
-    color: #fb774b;
-}
-
+/* Nội dung chính */
 #content {
-    margin-left: 20px;
-    width: 100%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#tab1 {
-    width: 15%;
-    float: left;
+/* Tiêu đề */
+h5 {
+    color: chocolate;
+    margin-bottom: 10px;
+}
+
+/* Bộ lọc (Checkbox) */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Định dạng các đường kẻ */
+hr {
+    border: none;
+    height: 1px;
+    background-color: chocolate;
+    margin: 10px 0;
+}
+
+/* Tab2 - Danh sách điện thoại mới */
+#tab2 {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+#tab2 h4 {
+    color: chocolate;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Danh sách sản phẩm */
+.item {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Mỗi sản phẩm */
+.item li {
+    width: 200px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ảnh sản phẩm */
+.item li img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Thông tin sản phẩm */
+.item li p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Giá cũ */
+.old {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Giá mới */
+.new {
+    font-weight: bold;
+    color: red;
+}
+
+/* Đường kẻ */
+#tab2 hr {
+    border: none;
+    height: 1px;
+    background-color: chocolate;
+    margin-top: 15px;
 }

@@ -70,16 +70,32 @@
                     <c:set var="pb" value="${requestScope.pb}" />
                     <form action="home1" id="f2">
                         <input type="checkbox" id="g0" name="price" ${pb[0]? "checked" : "" } value="0" onclick="setCheck1(this)"/>All<br/>
-                        <c:forEach begin="0" end="${4}" var="i">
+                        <c:forEach begin="0" end="${3}" var="i">
                             <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}" onclick="setCheck1(this)"/>${pp[i]}<br/>
                         </c:forEach>
                     </form>
-                            
+                </div>
+
+                <div id="tab2">
+                    <c:set var="news" value="${requestScope.news}" />
+                    <c:if test="${news != null}">
+                        <h4>Dien thoai moi</h4>
+                        <ul class="item">
+                            <c:forEach items="${news}" var="p">
+                                <li>
+                                    <a href="#">
+                                        <img src="${p.image}" width="100px" height="100px"/>
+                                        <p>${p.name}</p>
+                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                        <hr/>
+                    </c:if>
                 </div>
             </div>
-
-
-
         </div>
     </body>
 
