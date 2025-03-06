@@ -8,6 +8,24 @@
         <link rel="stylesheet" href="./css/header.css">
         <link rel="stylesheet" href="./css/list.css">
         <title>JSP Page</title>
+        <script>
+            function setCheck(obj) {
+                var fries = document.getElementsByName('cidd');
+                if((obj.id == 'c0') && (fries[0].checked == true)) {
+                    for(var i = 1; i < fries.length; i++) {
+                        fries[i].checked = false;
+                    }
+                } else {
+                    for(var i = 0; i < fries.length; i++) {
+                        if(fries[i].checked == true) {
+                            fries[0].checked = false;
+                            break;
+                        }
+                    }
+                }
+                document.getElementById('f1').submit();
+            }
+        </script>
     </head>
 
     <body>
@@ -25,15 +43,23 @@
                 <c:set var="cid" value="${requestScope.cid}" />
                 <ul class="menu">
                     <li><a href="home1" class="${cid == 0 ? " active" : "" }" href="home1?cid=${0}">All</a></li>
-                    <c:forEach items="${cat}" var="c">
+                        <c:forEach items="${cat}" var="c">
                         <li><a href="home1?cid=${c.id}" class="${cid == c.id ? " active" : "" }">${c.name}</a></li>
-                    </c:forEach>
+                        </c:forEach>
                 </ul>
             </div>
 
             <div id="content">
                 <div id="tab1">
-                     
+                    <c:set var="chid" value="${requestScope.chid}" />
+                    <h5 style="color: chocolate;">TEN HANG</h5>
+                    <hr style="border-top: 1px solid chocolate;"/>
+                    <form action="home1" id="f1">
+                        <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="$0" onclick="setCheck(this)"/>All<br/>
+                        <c:forEach begin="0" end="${cat.size() - 1}" var="i">
+                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId() == cid? "checked" : "" } value="${cat.get(i).getId()}" ${chid[i+1]? "checked:" : "" } onclick="setCheck(this)"/>${cat.get(i).getName()}<br/>
+                        </c:forEach>
+                    </form>
                 </div>
             </div>
 
