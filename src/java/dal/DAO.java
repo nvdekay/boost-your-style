@@ -118,4 +118,60 @@ public class DAO extends DBContext {
         }
         return list;
     }
+
+    public List<Product> searchByKey(String key) {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from Products where name like ? or describe like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + key + "%");
+            st.setString(2, "%" + key + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("id"));
+                p.setName(rs.getString("name"));
+                p.setImage(rs.getString("image"));
+                p.setPrice(rs.getDouble("price"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setDescribe(rs.getString("describe"));
+                Category c = getCategoryById(rs.getInt("cid"));
+                p.setCategory(c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Product> getProductsByCid(int cid) {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from Products where 1 = 1";
+        if (cid != 0) {
+            sql += " and cid = ?" + cid;
+        }
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            if (cid != 0) {
+                st.setInt(1, cid);
+            }
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("id"));
+                p.setName(rs.getString("name"));
+                p.setImage(rs.getString("image"));
+                p.setPrice(rs.getDouble("price"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setDescribe(rs.getString("describe"));
+                Category c = getCategoryById(rs.getInt("cid"));
+                p.setCategory(c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 }

@@ -94,6 +94,24 @@
                         </ul>
                         <hr/>
                     </c:if>
+
+                    <c:set var="olds" value="${requestScope.olds}" />
+                    <c:if test="${olds != null}">
+                        <h4>Dien thoai cu</h4>
+                        <ul class="item">
+                            <c:forEach items="${olds}" var="p">
+                                <li>
+                                    <a href="#">
+                                        <img src="${p.image}" width="100px" height="100px"/>
+                                        <p>${p.name}</p>
+                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                        <hr/>
+                    </c:if>
                 </div>
             </div>
         </div>
