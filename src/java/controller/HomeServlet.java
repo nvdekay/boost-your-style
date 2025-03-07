@@ -44,10 +44,11 @@ public class HomeServlet extends HttpServlet {
         boolean[] chid = new boolean[list.size() + 1];
         chid[0] = true;
         request.setAttribute("data", list);
-        request.setAttribute("pp", pp);
-        request.setAttribute("pb", pb);
         request.setAttribute("news", news);
         request.setAttribute("olds", olds);
+        request.setAttribute("pp", pp);
+        request.setAttribute("pb", pb);
+        request.setAttribute("cid", 0);
         request.setAttribute("chid", chid);
         request.getRequestDispatcher("list.jsp").forward(request, response);
     }

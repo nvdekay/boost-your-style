@@ -43,9 +43,9 @@
                 <c:set var="cat" value="${requestScope.data}" />
                 <c:set var="cid" value="${requestScope.cid}" />
                 <ul class="menu">
-                    <li><a href="home1" class="${cid == 0 ? " active" : "" }" href="home1?cid=${0}">All</a></li>
+                    <li><a class="${cid == 0 ? " active" : "" }" href="home1?cid=${0}">All</a></li>
                         <c:forEach items="${cat}" var="c">
-                        <li><a href="home1?cid=${c.id}" class="${cid == c.id ? " active" : "" }">${c.name}</a></li>
+                            <li><a class="${c.id == cid ? " active" : "" }" href="home1?cid=${c.id}">${c.name}</a></li>
                         </c:forEach>
                 </ul>
             </div>
@@ -58,12 +58,12 @@
                     <h5 style="color: chocolate;">TEN HANG</h5>
                     <hr style="border-top: 1px solid chocolate;" />
                     <form action="home1" id="f1">
-                        <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="$0"
-                               onclick="setCheck(this)" />All<br />
+                        <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="${0}"
+                               onclick="setCheck(this)" />All<br/>
                         <c:forEach begin="0" end="${cat.size() - 1}" var="i">
-                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId()==cid? "checked" : "" }
-                                   value="${cat.get(i).getId()}" ${chid[i+1]? "checked:" : "" }
-                                   onclick="setCheck(this)" />${cat.get(i).getName()}<br />
+                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId() == cid? "checked" : "" }
+                                   value="${cat.get(i).getId()}" ${chid[i+1]? "checked" : "" }
+                                   onclick="setCheck(this)" />${cat.get(i).getName()}<br/>
                         </c:forEach>
                     </form>
 
@@ -85,7 +85,7 @@
                 <div id="tab2">
                     <c:set var="news" value="${requestScope.news}" />
                     <c:if test="${news != null}">
-                        <h4>Dien thoai moi</h4>
+                        <h4>Do moi</h4>
                         <ul class="item">
                             <c:forEach items="${news}" var="p">
                                 <li>
@@ -103,7 +103,7 @@
 
                     <c:set var="olds" value="${requestScope.olds}" />
                     <c:if test="${olds != null}">
-                        <h4>Dien thoai cu</h4>
+                        <h4>Do cu</h4>
                         <ul class="item">
                             <c:forEach items="${olds}" var="p">
                                 <li>
@@ -121,7 +121,7 @@
 
                     <c:set var="list" value="${requestScope.products}" />
                     <c:if test="${list != null}">
-                        <h4>Đồ  (${list.size()} san pham)</h4>
+                        <h4>Đồ (${list.size()} san pham)</h4>
                         <ul class="item">
                             <c:forEach items="${list}" var="p">
                                 <li>
