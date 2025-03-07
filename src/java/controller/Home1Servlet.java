@@ -53,7 +53,7 @@ public class Home1Servlet extends HttpServlet {
         int[] cidd = null;
         int[] id = null;
         int cid = 0;
-        
+
         if (cid_raw != null) {
             cid = Integer.parseInt(cid_raw);
             products = d.getProductsByCid(cid);
@@ -73,19 +73,68 @@ public class Home1Servlet extends HttpServlet {
             double from = 0, to = 0;
             for (int i = 0; i < price.length; i++) {
                 List<Product> temp = new ArrayList<>();
-                if(price[i].equals("0")) {
+                if (price[i].equals("0")) {
                     from = 0;
                     to = 20000;
                     products = d.getProductsByPrice(from, to);
                     pb[0] = true;
                     break;
                 } else {
-                    
+                    if (price[i].equals("1")) {
+                        from = 0;
+                        to = 1000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[1] = true;
+                    }
+                    if (price[i].equals("2")) {
+                        from = 1000;
+                        to = 3000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[2] = true;
+                    }
+                    if (price[i].equals("3")) {
+                        from = 3000;
+                        to = 5000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[3] = true;
+                    }
+                    if (price[i].equals("4")) {
+                        from = 5000;
+                        to = 20000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[4] = true;
+                    }
                 }
             }
         }
-        for (int i = 0; i < categories.size(); i++) {
-            Category c = categories.get(i);
+        if (price == null) {
+            pb[0] = true;
+        }
+        if (cid_raw == null) {
+            chid[0] = true;
+        }
+        if ((cidd_raw != null) && (cidd[0] != 0)) {
+            chid[0] = false;
+            for (int i = 1; i < chid.length; i++) {
+                if (ischeck(categories.get(i - 1).getId(), cidd)) {
+                    chid[i] = true;
+                } else {
+                    chid[i] = false;
+                }
+            }
+        }
+        request.setAttribute("data", categories);
+        request.setAttribute("products", products);
+        request.setAttribute("pp", pp);
+        request.setAttribute("key", key);
+        request.setAttribute("pb", pb);
+        request.setAttribute("cid", cid);
+        request.setAttribute("chid", chid);
+        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
     private boolean ischeck(int d, int[] id) {
