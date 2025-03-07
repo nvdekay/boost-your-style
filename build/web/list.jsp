@@ -121,13 +121,13 @@
 
                     <c:set var="list" value="${requestScope.products}" />
                     <c:if test="${list != null}">
-                        <h4>Dien thoai (${list.size()} san pham)</h4>
+                        <h4>Đồ  (${list.size()} san pham)</h4>
                         <ul class="item">
                             <c:forEach items="${list}" var="p">
                                 <li>
                                     <a href="#">
                                         <img src="${p.image}" width="100px" height="100px" />
-                                        <p>${p.name}</p>
+                                        <p>${(p.name)}</p>
                                         <p>Gia goc: <span class="old">${p.price}</span>VND</p>
                                         <p>Sale: <span class="new">${p.price}</span>VND</p>
                                     </a>
