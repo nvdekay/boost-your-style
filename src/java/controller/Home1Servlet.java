@@ -66,13 +66,22 @@ public class Home1Servlet extends HttpServlet {
             for (int i = 0; i < cidd.length; i++) {
                 cidd[i] = Integer.parseInt(cidd_raw[i]);
             }
-            products = d.seacrhByCheck(cidd);
+            products = d.searchByCheck(cidd);
         }
 
         if (price != null) {
-            id = new int[price.length];
+            double from = 0, to = 0;
             for (int i = 0; i < price.length; i++) {
-                id[i] = Integer.parseInt(price[i]);
+                List<Product> temp = new ArrayList<>();
+                if(price[i].equals("0")) {
+                    from = 0;
+                    to = 20000;
+                    products = d.getProductsByPrice(from, to);
+                    pb[0] = true;
+                    break;
+                } else {
+                    
+                }
             }
         }
         for (int i = 0; i < categories.size(); i++) {

@@ -174,4 +174,42 @@ public class DAO extends DBContext {
         }
         return list;
     }
+
+    public List<Product> searchByCheck(int[] cid) {
+//      Same as: Select * from Products where cid in ( , ) => Dua ra nhung san pham co cid la cac gia tri trong ngoac
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from Products where 1 = 1";
+        if ((cid != null) && (cid[0] != 0)) {
+            sql += " and cid in (";
+            for (int i = 0; i < cid.length; i++) {
+                sql += cid[i] + ",";
+            }
+            if (sql.endsWith(",")) {
+                sql = sql.substring(0, sql.length() - 1);
+            }
+            sql += ")";
+        }
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            for (int i = 0; i < cid.length; i++) {
+                st.setInt(i + 1, cid[i]);
+            }
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("id"));
+                p.setName(rs.getString("name"));
+                p.setImage(rs.getString("image"));
+                p.setPrice(rs.getDouble("price"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setDescribe(rs.getString("describe"));
+                Category c = getCategoryById(rs.getInt("cid"));
+                p.setCategory(c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 }
