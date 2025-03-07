@@ -33,7 +33,8 @@
 
             <div class="top-nav">
                 <form action="home1" class="d-flex" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="key">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="key">
                     <button class="btn btn-outline-dark" type="submit" style="margin-left: 10px;">Search</button>
                 </form>
             </div>
@@ -55,23 +56,28 @@
                     <!-- Ten hang -->
                     <c:set var="chid" value="${requestScope.chid}" />
                     <h5 style="color: chocolate;">TEN HANG</h5>
-                    <hr style="border-top: 1px solid chocolate;"/>
+                    <hr style="border-top: 1px solid chocolate;" />
                     <form action="home1" id="f1">
-                        <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="$0" onclick="setCheck(this)"/>All<br/>
+                        <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="$0"
+                               onclick="setCheck(this)" />All<br />
                         <c:forEach begin="0" end="${cat.size() - 1}" var="i">
-                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId() == cid? "checked" : "" } value="${cat.get(i).getId()}" ${chid[i+1]? "checked:" : "" } onclick="setCheck(this)"/>${cat.get(i).getName()}<br/>
+                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId()==cid? "checked" : "" }
+                                   value="${cat.get(i).getId()}" ${chid[i+1]? "checked:" : "" }
+                                   onclick="setCheck(this)" />${cat.get(i).getName()}<br />
                         </c:forEach>
                     </form>
 
                     <!-- Muc gia -->
                     <h5>MUC GIA</h5>
-                    <hr style="border-top: 1px solid chocolate;"/>
+                    <hr style="border-top: 1px solid chocolate;" />
                     <c:set var="pp" value="${requestScope.pp}" />
                     <c:set var="pb" value="${requestScope.pb}" />
                     <form action="home1" id="f2">
-                        <input type="checkbox" id="g0" name="price" ${pb[0]? "checked" : "" } value="0" onclick="setCheck1(this)"/>All<br/>
+                        <input type="checkbox" id="g0" name="price" ${pb[0]? "checked" : "" } value="0"
+                               onclick="setCheck1(this)" />All<br />
                         <c:forEach begin="0" end="${3}" var="i">
-                            <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}" onclick="setCheck1(this)"/>${pp[i]}<br/>
+                            <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}"
+                                   onclick="setCheck1(this)" />${pp[i]}<br />
                         </c:forEach>
                     </form>
                 </div>
@@ -84,7 +90,7 @@
                             <c:forEach items="${news}" var="p">
                                 <li>
                                     <a href="#">
-                                        <img src="${p.image}" width="100px" height="100px"/>
+                                        <img src="${p.image}" width="100px" height="100px" />
                                         <p>${p.name}</p>
                                         <p>Gia goc: <span class="old">${p.price}</span>VND</p>
                                         <p>Sale: <span class="new">${p.price}</span>VND</p>
@@ -92,7 +98,7 @@
                                 </li>
                             </c:forEach>
                         </ul>
-                        <hr/>
+                        <hr />
                     </c:if>
 
                     <c:set var="olds" value="${requestScope.olds}" />
@@ -102,7 +108,7 @@
                             <c:forEach items="${olds}" var="p">
                                 <li>
                                     <a href="#">
-                                        <img src="${p.image}" width="100px" height="100px"/>
+                                        <img src="${p.image}" width="100px" height="100px" />
                                         <p>${p.name}</p>
                                         <p>Gia goc: <span class="old">${p.price}</span>VND</p>
                                         <p>Sale: <span class="new">${p.price}</span>VND</p>
@@ -110,7 +116,24 @@
                                 </li>
                             </c:forEach>
                         </ul>
-                        <hr/>
+                        <hr />
+                    </c:if>
+
+                    <c:set var="list" value="${requestScope.products}" />
+                    <c:if test="${list != null}">
+                        <h4>Dien thoai (${list.size()} san pham)</h4>
+                        <ul class="item">
+                            <c:forEach items="${list}" var="p">
+                                <li>
+                                    <a href="#">
+                                        <img src="${p.image}" width="100px" height="100px" />
+                                        <p>${p.name}</p>
+                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </c:if>
                 </div>
             </div>
