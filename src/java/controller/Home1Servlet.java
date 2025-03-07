@@ -50,9 +50,8 @@ public class Home1Servlet extends HttpServlet {
         String cid_raw = request.getParameter("cid");
         String[] cidd_raw = request.getParameterValues("cidd");
         String[] price = request.getParameterValues("price");
-        int[] cidd = null;
-        int[] id = null;
         int cid = 0;
+        int[] cidd = null;
 
         if (cid_raw != null) {
             cid = Integer.parseInt(cid_raw);
@@ -75,7 +74,7 @@ public class Home1Servlet extends HttpServlet {
                 List<Product> temp = new ArrayList<>();
                 if (price[i].equals("0")) {
                     from = 0;
-                    to = 20000;
+                    to = 2000000;
                     products = d.getProductsByPrice(from, to);
                     pb[0] = true;
                     break;
@@ -103,7 +102,7 @@ public class Home1Servlet extends HttpServlet {
                     }
                     if (price[i].equals("4")) {
                         from = 5000;
-                        to = 20000;
+                        to = 2000000;
                         temp = d.getProductsByPrice(from, to);
                         products.addAll(temp);
                         pb[4] = true;

@@ -135,6 +135,7 @@ public class DAO extends DBContext {
                 p.setPrice(rs.getDouble("price"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setDescribe(rs.getString("describe"));
+                p.setReleaseDate(rs.getString("releaseDate"));
                 Category c = getCategoryById(rs.getInt("cid"));
                 p.setCategory(c);
                 list.add(p);
@@ -149,7 +150,7 @@ public class DAO extends DBContext {
         List<Product> list = new ArrayList<>();
         String sql = "select * from Products where 1 = 1";
         if (cid != 0) {
-            sql += " and cid = ?" + cid;
+            sql += " and cid = " + cid;
         }
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -165,6 +166,7 @@ public class DAO extends DBContext {
                 p.setPrice(rs.getDouble("price"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setDescribe(rs.getString("describe"));
+                p.setReleaseDate(rs.getString("releaseDate"));
                 Category c = getCategoryById(rs.getInt("cid"));
                 p.setCategory(c);
                 list.add(p);
@@ -192,9 +194,6 @@ public class DAO extends DBContext {
         }
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            for (int i = 0; i < cid.length; i++) {
-                st.setInt(i + 1, cid[i]);
-            }
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Product p = new Product();
@@ -204,6 +203,7 @@ public class DAO extends DBContext {
                 p.setPrice(rs.getDouble("price"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setDescribe(rs.getString("describe"));
+                p.setReleaseDate(rs.getString("releaseDate"));
                 Category c = getCategoryById(rs.getInt("cid"));
                 p.setCategory(c);
                 list.add(p);
@@ -229,6 +229,7 @@ public class DAO extends DBContext {
                 p.setImage(rs.getString("image"));
                 p.setPrice(rs.getDouble("price"));
                 p.setQuantity(rs.getInt("quantity"));
+                p.setReleaseDate(rs.getString("releaseDate"));
                 p.setDescribe(rs.getString("describe"));
                 Category c = getCategoryById(rs.getInt("cid"));
                 p.setCategory(c);

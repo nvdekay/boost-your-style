@@ -121,7 +121,7 @@
 
                     <c:set var="list" value="${requestScope.products}" />
                     <c:if test="${list != null}">
-                        <h4>Đồ (${list.size()} san pham)</h4>
+                        <h4>Có (${list.size()} sản phẩm)</h4>
                         <ul class="item">
                             <c:forEach items="${list}" var="p">
                                 <li>
@@ -134,6 +134,7 @@
                                 </li>
                             </c:forEach>
                         </ul>
+                        <hr />
                     </c:if>
                 </div>
             </div>
