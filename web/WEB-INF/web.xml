@@ -6,7 +6,7 @@
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/home.jsp</url-pattern>        
-        <url-pattern>/home</url-pattern>
+        <url-pattern>/add.jsp</url-pattern>        
+        <url-pattern>/add</url-pattern>
     </filter-mapping>
 </web-app>

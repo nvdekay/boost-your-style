@@ -23,6 +23,7 @@
             </div>
         </section>
 
+        <!-- Logo brand -->
         <section id="brand" class="container">
             <div class="row m-0 py-5">
                 <img class="img-fluid col-lg-2 col-md-4 col-6" src="./img/brand/1.png" alt="">
@@ -34,33 +35,61 @@
             </div>
         </section>
 
-        <!-- All Category -->
-        <section id="news" class="w-100">
-            <div class="row p-0 m-0">
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
-                    <img class="img-fluid" src="./img/new/2.jpg" alt="">
-                    <div class="details">
-                        <h2>Awesome Blank Outfit</h2>
-                        <button class="text-uppercase" href="#clothes">Show now</button>
-                    </div>
-                </div>
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
-                    <img class="img-fluid" src="./img/new/1.jpg" alt="">
-                    <div class="details">
-                        <h2>Extreme Rare Sneakers</h2>
-                        <button class="text-uppercase">Show now</button>
-                    </div>
-                </div>
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
-                    <img class="img-fluid" src="./img/new/3.jpg" alt="">
-                    <div class="details">
-                        <h2>Spotwear Up To 50% Off</h2>
-                        <button class="text-uppercase">Show now</button>
-                    </div>
-                </div>
+        <div id="tab2">
+            <c:set var="news" value="${requestScope.news}" />
+            <c:if test="${news != null}">
+                <h4>Do moi</h4>
+                <ul class="item">
+                    <c:forEach items="${news}" var="p">
+                        <li>
+                            <a href="#">
+                                <img src="${p.image}" width="100px" height="100px" />
+                                <p>${p.name}</p>
+                                <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                <p>Sale: <span class="new">${p.price}</span>VND</p>
+                            </a>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <hr />
+            </c:if>
 
-            </div>
-        </section>
+            <c:set var="olds" value="${requestScope.olds}" />
+            <c:if test="${olds != null}">
+                <h4>Do cu</h4>
+                <ul class="item">
+                    <c:forEach items="${olds}" var="p">
+                        <li>
+                            <a href="#">
+                                <img src="${p.image}" width="100px" height="100px" />
+                                <p>${p.name}</p>
+                                <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                <p>Sale: <span class="new">${p.price}</span>VND</p>
+                            </a>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <hr />
+            </c:if>
+
+            <c:set var="list" value="${requestScope.products}" />
+            <c:if test="${list != null}">
+                <h4>Có (${list.size()} sản phẩm)</h4>
+                <ul class="item">
+                    <c:forEach items="${list}" var="p">
+                        <li>
+                            <a href="#">
+                                <img src="${p.image}" width="100px" height="100px" />
+                                <p>${(p.name)}</p>
+                                <p>Gia goc: <span class="old">${p.price}</span>VND</p>
+                                <p>Sale: <span class="new">${p.price}</span>VND</p>
+                            </a>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <hr/>
+            </c:if>
+        </div>
 
         <!-- Clothes -->
         <section id="clothes" class="my-5">
