@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <%@include file="header.jsp"%>
+        <%@include file="header.jsp" %>
         <section id="blog-home" class="pt-5 mt-5 container">
             <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
             <hr>
@@ -37,10 +37,16 @@
                     <tr>
                         <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                         <td><img src="./img/shoes/1.jpg" alt=""></td>
-                        <td><h5>Product Name</h5></td>
-                        <td><h5>Product Price</h5></td>
+                        <td>
+                            <h5>Product Name</h5>
+                        </td>
+                        <td>
+                            <h5>Product Price</h5>
+                        </td>
                         <td><input class="w-25 pl-1" type="number" value="1"></td>
-                        <td><h5>Product Total Price</h5></td>
+                        <td>
+                            <h5>Product Total Price</h5>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -78,7 +84,13 @@
             </div>
         </section>
 
-        <%@include file="footer.jsp"%>
+        <%@include file="footer.jsp" %>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+            integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+    crossorigin="anonymous"></script>
 
 </html>
