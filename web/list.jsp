@@ -45,7 +45,7 @@
                 <ul class="menu">
                     <li><a class="${cid == 0 ? " active" : "" }" href="home1?cid=${0}">All</a></li>
                         <c:forEach items="${cat}" var="c">
-                            <li><a class="${c.id == cid ? " active" : "" }" href="home1?cid=${c.id}">${c.name}</a></li>
+                        <li><a class="${c.id == cid ? " active" : "" }" href="home1?cid=${c.id}">${c.name}</a></li>
                         </c:forEach>
                 </ul>
             </div>

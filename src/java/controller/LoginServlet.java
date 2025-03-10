@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Admin;
+import model.Account;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
         response.addCookie(cr);
 
         DAO d = new DAO();
-        Admin a = d.check(u, p);
+        Account a = d.check(u, p);
         if (a == null) {
             // Chua co user nay
             request.setAttribute("error", "Invalid username or password.");
@@ -56,13 +56,13 @@ public class LoginServlet extends HttpServlet {
         } else {
             // Co user nay
             session.setAttribute("account", a);
-            // // role = 1 -> admin
+            // // roleId = 1 -> admin
             // if (a.getRole() == 1) {
             // request.getRequestDispatcher("admin.jsp").forward(request, response);
             // } else { // role = 0 -> user
             // request.getRequestDispatcher("home.jsp").forward(request, response);
             // }
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home");
         }
 
     }

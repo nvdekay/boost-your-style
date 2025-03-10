@@ -1,6 +1,6 @@
 package dal;
 
-import model.Admin;
+import model.Account;
 import model.Category;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import model.Product;
 
 public class DAO extends DBContext {
 
-    public Admin check(String username, String password) {
+    public Account check(String username, String password) {
         String sql = "select * from account where username = ? and password = ?";
 
         try {
@@ -20,9 +20,9 @@ public class DAO extends DBContext {
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Admin a = new Admin(rs.getString("username"),
+                Account a = new Account(rs.getString("username"),
                         rs.getString("password"),
-                        rs.getInt("role"));
+                        rs.getInt("roleId"));
                 return a;
             }
 

@@ -133,7 +133,7 @@ public class Home1Servlet extends HttpServlet {
         request.setAttribute("pb", pb);
         request.setAttribute("cid", cid);
         request.setAttribute("chid", chid);
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     private boolean ischeck(int d, int[] id) {
