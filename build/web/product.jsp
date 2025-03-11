@@ -79,7 +79,7 @@
                             <ul class="item">
                                 <c:forEach items="${list}" var="p">
                                     <li>
-                                        <a href="#">
+                                        <a href="sproduct.jsp?id=${p.id}">
                                             <img src="${p.image}" width="100px" height="100px" />
                                             <p>${(p.name)}</p>
                                             <p>Gia goc: <span class="old">${p.price}</span>VND</p>
