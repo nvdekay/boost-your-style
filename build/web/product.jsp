@@ -37,8 +37,8 @@
 
 
         <body>
-            <%@include file="header.jsp" %>               
-                <section id="tab1" class="col-md-4 col-12" style="margin: 100px 20px; height: 0;">                    
+            <%@include file="header.jsp" %>
+                <section id="tab1" class="col-md-4 col-12" style="margin: 100px 20px; height: 0;">
                     <c:set var="chid" value="${requestScope.chid}" />
                     <h5 style="color: chocolate;">TEN HANG</h5>
                     <hr style="border-top: 1px solid chocolate;" />
@@ -47,12 +47,12 @@
                             onclick="setCheck(this)" /> All<br />
                         <c:forEach begin="0" end="${cat.size() - 1}" var="i">
                             <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId()==cid? "checked" : "" }
-                                value="${cat.get(i).getId()}" ${chid[i+1]? "checked" : "" }
-                                onclick="setCheck(this)" /> ${cat.get(i).getName()}<br />
+                                value="${cat.get(i).getId()}" ${chid[i+1]? "checked" : "" } onclick="setCheck(this)" />
+                            ${cat.get(i).getName()}<br />
                         </c:forEach>
                     </form>
 
-                     
+
                     <h5 style="color: chocolate;">MUC GIA</h5>
                     <hr style="border-top: 1px solid chocolate;" />
                     <c:set var="pp" value="${requestScope.pp}" />
@@ -74,7 +74,7 @@
                             <h2 class="font-weight-bold">Best To Watch</h2>
                             <hr>
                         </div>
-                        <h4 class="font-weight-bold text-center mb-5">Có ${list.size()} 
+                        <h4 class="font-weight-bold text-center mb-5">Có ${list.size()}
                             sản phẩm
                         </h4>
                         <div class="row mx-auto container">
@@ -100,35 +100,13 @@
 
                 <hr class="container">
 
-
-                <!--       <div class="row mx-auto container">
-        <div class="product text-center col-lg-3 col-md-4 col-12">
-            <img onclick="window.location.href = 'sproduct.jsp';" class="img-fluid mb-3"
-                 src="" alt="">
-            <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">${p.name}</h5>
-            <h4 class="p-price">$${p.price}</h4>
-            <button class="buy-btn">Buy Now</button>
-        </div>
-    </div> -->
-
                 <!-- Pagination -->
-                <c:set var="k" value="${requestScope.key}" />
                 <c:set var="page" value="${requestScope.page}" />
-                <nav class="container">
-                    <ul class="pagination">
-                        <c:forEach begin="${1}" end="${requestScope.numpage}" var="i">
-                            <li class="page-item active"><a class="${i==page?" active":""}"
-                                    href="search?page=${i}&key=${key}">${i} Okeeee</a></li>
-                        </c:forEach>
-                    </ul>
-                </nav>
+                <div class="pagination">
+                    <c:forEach begin="${1}" end="${requestScope.numpage}" var="i">
+                        <a class="${i==page?" active":""}" href="list?page=${i}">${i}</a>
+                    </c:forEach>
+                </div>
 
                 <%@include file="footer.jsp" %>
         </body>

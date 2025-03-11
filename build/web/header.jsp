@@ -33,15 +33,25 @@
                                 <li class="nav-item"><a class="${c.id == cid ? " active" : "" } nav-link"
                                         href="product1?cid=${c.id}">${c.name}</a></li>
                             </c:forEach>
-
+                            <!-- <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clothes">Clothes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#shoes">Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#watches">Watches</a>
+                    </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#footer">Contact Us</a>
                             </li>
                             <form action="product1" class="d-flex" method="get">
-                                <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" name="key">
-                                <button class="btn btn-outline-dark" onclick="this.form.submit()" style="margin-left: 10px;">
-                                    Search
-                                </button>
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-dark" type="submit" onclick="this.form.submit()"
+                                    style="margin-left: 10px;">Search</button>
                             </form>
 
                     </div>

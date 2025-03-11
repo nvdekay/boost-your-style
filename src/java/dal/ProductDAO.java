@@ -13,8 +13,7 @@ public class ProductDAO extends DBContext {
 
     public List<Product> getAll() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT p.id, p.name, p.image, p.price, p.quantity, p.describe, p.releaseDate, p.cid cid, c.name cname "
-                + "FROM PRODUCTS p inner join CATEGORIES c on p.cid = c.id ";
+        String sql = "SELECT * FROM Products";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
