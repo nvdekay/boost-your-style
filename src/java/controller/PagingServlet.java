@@ -43,7 +43,7 @@ public class PagingServlet extends HttpServlet {
         int numpage = (size % numperpage == 0 ? (size / numperpage) : ((size / numperpage)) + 1);
         String xpage = request.getParameter("page");
         if (xpage == null) {
-            page = 1;
+                page = 1;
         } else {
             page = Integer.parseInt(xpage);
         }
