@@ -1,15 +1,6 @@
 package model;
 
 public class Account {
-//    	ID int identity(1,1) primary key,
-//	Username nvarchar(100) not null unique,
-//	Email nvarchar(100) not null unique,
-//	Address nvarchar(100) not null,
-//	PhoneNumber varchar(20) not null unique,
-//	Password varchar(50) not null,
-//	RoleID int not null,
-//	Create_At datetime default(getDate()),
-//	foreign key (RoleID) references Roles(RoleID),
 
     private int id, roleId;
     private String username, email, address, phoneNumber, password;

@@ -83,7 +83,7 @@ public class Home1Servlet extends HttpServlet {
         request.setAttribute("key", key);
         request.setAttribute("cid", cid);
         request.setAttribute("chid", chid);
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     private boolean ischeck(int d, int[] id) {
@@ -97,12 +97,6 @@ public class Home1Servlet extends HttpServlet {
             }
             return false;
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
 }

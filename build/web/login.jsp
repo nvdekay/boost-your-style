@@ -52,7 +52,6 @@
                 <img src="https://www.google.com/favicon.ico" alt="Google" style="width: 20px; height: 20px;">
                 Login with Google
             </a>
-
         </div>
 
         <div class="sign-up-link">
