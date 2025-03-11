@@ -5,17 +5,23 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="./css/header.css">
         <link rel="stylesheet" href="./css/list.css">
-        <title>JSP Page</title>
+        <title>List</title>
         <script>
             function setCheck(obj) {
                 var fries = document.getElementsByName('cidd');
                 if ((obj.id == 'c0') && (fries[0].checked == true)) {
+                    // Uncheck all other checkboxes if 'All' is checked
                     for (var i = 1; i < fries.length; i++) {
                         fries[i].checked = false;
                     }
                 } else {
+                    // Uncheck 'All' checkbox if any other checkbox is checked
                     for (var i = 0; i < fries.length; i++) {
                         if (fries[i].checked == true) {
                             fries[0].checked = false;
@@ -23,6 +29,7 @@
                         }
                     }
                 }
+                // Submit the form after updating checkbox states
                 document.getElementById('f1').submit();
             }
         </script>
@@ -59,11 +66,11 @@
                     <hr style="border-top: 1px solid chocolate;" />
                     <form action="home1" id="f1">
                         <input type="checkbox" id="c0" name="cidd" ${chid[0]? "checked" : "" } value="${0}"
-                               onclick="setCheck(this)" />All<br/>
+                               onclick="setCheck(this)" />All<br />
                         <c:forEach begin="0" end="${cat.size() - 1}" var="i">
-                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId() == cid? "checked" : "" }
+                            <input type="checkbox" id="cm" name="cidd" ${cat.get(i).getId()==cid? "checked" : "" }
                                    value="${cat.get(i).getId()}" ${chid[i+1]? "checked" : "" }
-                                   onclick="setCheck(this)" />${cat.get(i).getName()}<br/>
+                                   onclick="setCheck(this)" />${cat.get(i).getName()}<br />
                         </c:forEach>
                     </form>
 
@@ -83,46 +90,10 @@
                 </div>
 
                 <div id="tab2">
-                    <c:set var="news" value="${requestScope.news}" />
-                    <c:if test="${news != null}">
-                        <h4>Do moi</h4>
-                        <ul class="item">
-                            <c:forEach items="${news}" var="p">
-                                <li>
-                                    <a href="#">
-                                        <img src="${p.image}" width="100px" height="100px" />
-                                        <p>${p.name}</p>
-                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
-                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                        <hr />
-                    </c:if>
-
-                    <c:set var="olds" value="${requestScope.olds}" />
-                    <c:if test="${olds != null}">
-                        <h4>Do cu</h4>
-                        <ul class="item">
-                            <c:forEach items="${olds}" var="p">
-                                <li>
-                                    <a href="#">
-                                        <img src="${p.image}" width="100px" height="100px" />
-                                        <p>${p.name}</p>
-                                        <p>Gia goc: <span class="old">${p.price}</span>VND</p>
-                                        <p>Sale: <span class="new">${p.price}</span>VND</p>
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                        <hr />
-                    </c:if>
-
                     <c:set var="list" value="${requestScope.products}" />
                     <c:if test="${list != null}">
                         <c:forEach items="${cat}" var="c">
-                            <h4>${c.name} Có (${list.size()} sản phẩm)</h4>
+                            <h4>Có (${list.size()} sản phẩm)</h4>
                         </c:forEach>
                         <ul class="item">
                             <c:forEach items="${list}" var="p">

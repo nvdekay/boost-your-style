@@ -13,7 +13,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
             <div class="container">
-                <img src="img/logo1.png" alt="" width="200">
+                <img src="img/logo1.png" alt="" width="200" href="home">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -26,12 +26,10 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="${cid == 0 ? " active" : "" } nav-link" href="product">All</a>
+                            <a class="${cid == 0 ? " active" : "" } nav-link" href="home1?cid=${0}">All</a>
                         </li>
                         <c:forEach items="${cat}" var="c">
-                            <li class="nav-item">
-                                <a class="${c.id == cid ? " active" : "" } nav-link" href="product1?cid=${c.id}">${c.name}</a>
-                            </li>
+                            <li class="nav-item"><a class="${c.id == cid ? " active" : "" } nav-link" href="home1?cid=${c.id}">${c.name}</a></li>
                         </c:forEach>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#home">Home</a>
