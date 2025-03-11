@@ -13,7 +13,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
             <div class="container">
-                <img src="img/logo1.png" alt="" width="200" href="home">
+                <img src="img/logo1.png" alt="" width="200">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
