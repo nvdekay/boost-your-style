@@ -56,10 +56,9 @@
                         <p>Copyright ©2025 All Rights Reserved</p>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/nvdeekay.07"><i style="margin: auto;" class="fab fa-facebook-f"></i></a>
+                        <a href="https://github.com/nvdekay"><i style="margin: auto;" class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/nvdeekay.07/"><i style="margin: auto;" class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>

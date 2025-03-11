@@ -5,11 +5,11 @@
     object-fit: cover;
 }
 
-#watches > nav > ul > li.page-item.active > a {
+#products > nav > ul > li.page-item.active > a {
     background-color: #000;
 }
 
-#watches > nav > ul > li:nth-child(n):hover > a {
+#products > nav > ul > li:nth-child(n):hover > a {
     background-color: coral;
     color: #fff;
 }

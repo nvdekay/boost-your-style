@@ -3,19 +3,18 @@ package controller;
 import dal.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import model.Category;
 import model.Product;
 
-@WebServlet(name = "Home1Servlet", urlPatterns = {"/home1"})
-public class Home1Servlet extends HttpServlet {
+@WebServlet(name = "Product1Servlet", urlPatterns = {"/product1"})
+public class Product1Servlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,10 +24,10 @@ public class Home1Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Home1Servlet</title>");
+            out.println("<title>Servlet Product1Servlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Home1Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Product1Servlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -37,6 +36,8 @@ public class Home1Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String[] pp = {"Dưới 1 triệu", "Từ 1-3 triệu", "Từ 3-5 triệu", "Trên 5 triệu"};
+        boolean[] pb = new boolean[pp.length + 1];
         DAO d = new DAO();
         List<Category> categories = d.getAll();
         boolean[] chid = new boolean[categories.size() + 1];
@@ -65,6 +66,52 @@ public class Home1Servlet extends HttpServlet {
             }
             products = d.searchByCheck(cidd);
         }
+
+        if (price != null) {
+            double from = 0, to = 0;
+            for (int i = 0; i < price.length; i++) {
+                List<Product> temp = new ArrayList<>();
+                if (price[i].equals("0")) {
+                    from = 0;
+                    to = 2000000;
+                    products = d.getProductsByPrice(from, to);
+                    pb[0] = true;
+                    break;
+                } else {
+                    if (price[i].equals("1")) {
+                        from = 0;
+                        to = 1000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[1] = true;
+                    }
+                    if (price[i].equals("2")) {
+                        from = 1000;
+                        to = 3000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[2] = true;
+                    }
+                    if (price[i].equals("3")) {
+                        from = 3000;
+                        to = 5000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[3] = true;
+                    }
+                    if (price[i].equals("4")) {
+                        from = 5000;
+                        to = 2000000;
+                        temp = d.getProductsByPrice(from, to);
+                        products.addAll(temp);
+                        pb[4] = true;
+                    }
+                }
+            }
+        }
+        if (price == null) {
+            pb[0] = true;
+        }
         if (cid_raw == null) {
             chid[0] = true;
         }
@@ -80,7 +127,9 @@ public class Home1Servlet extends HttpServlet {
         }
         request.setAttribute("data", categories);
         request.setAttribute("products", products);
+        request.setAttribute("pp", pp);
         request.setAttribute("key", key);
+        request.setAttribute("pb", pb);
         request.setAttribute("cid", cid);
         request.setAttribute("chid", chid);
         request.getRequestDispatcher("home.jsp").forward(request, response);

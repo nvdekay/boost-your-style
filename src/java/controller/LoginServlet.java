@@ -56,12 +56,12 @@ public class LoginServlet extends HttpServlet {
         } else {
             // Co user nay
             session.setAttribute("account", a);
-            // // roleId = 1 -> admin
-            // if (a.getRole() == 1) {
-            // request.getRequestDispatcher("admin.jsp").forward(request, response);
-            // } else { // role = 0 -> user
-            // request.getRequestDispatcher("home.jsp").forward(request, response);
-            // }
+            // roleId = 1 -> admin
+//            if (a.getRoleId() == 1) {
+//                request.getRequestDispatcher("admin.jsp").forward(request, response);
+//            } else { // role = 2 -> user
+//                request.getRequestDispatcher("home.jsp").forward(request, response);
+//            }
             response.sendRedirect("home");
         }
 

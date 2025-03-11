@@ -77,7 +77,7 @@
                                onclick="setCheck1(this)" />All<br />
                         <c:forEach begin="0" end="${3}" var="i">
                             <input type="checkbox" id="g1" name="price" ${pb[i+1]? "checked" : "" } value="${(i+1)}"
-                                   onclick="setCheck1(this)" />${pp[i]}<br />
+                                   onclick="setCheck(this)" />${pp[i]}<br />
                         </c:forEach>
                     </form>
                 </div>
@@ -121,7 +121,9 @@
 
                     <c:set var="list" value="${requestScope.products}" />
                     <c:if test="${list != null}">
-                        <h4>Có (${list.size()} sản phẩm)</h4>
+                        <c:forEach items="${cat}" var="c">
+                            <h4>${c.name} Có (${list.size()} sản phẩm)</h4>
+                        </c:forEach>
                         <ul class="item">
                             <c:forEach items="${list}" var="p">
                                 <li>

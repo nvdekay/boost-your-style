@@ -26,11 +26,11 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="${cid == 0 ? " active" : "" } nav-link" href="home1?cid=${0}">All</a>
+                            <a class="${cid == 0 ? " active" : "" } nav-link" href="product">All</a>
                         </li>
                         <c:forEach items="${cat}" var="c">
-                            <li>
-                                <a class="${c.id == cid ? " active" : "" }" href="home1?cid=${c.id}">${c.name}</a>
+                            <li class="nav-item">
+                                <a class="${c.id == cid ? " active" : "" } nav-link" href="product1?cid=${c.id}">${c.name}</a>
                             </li>
                         </c:forEach>
                         <!-- <li class="nav-item">

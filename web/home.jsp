@@ -111,47 +111,6 @@
                             <h4 class="p-price">$92.00</h4>
                             <button class="buy-btn">Buy Now</button>
                         </div>
-                        <div class="product text-center col-lg-3 col-md-4 col-12">
-                            <img class="img-fluid mb-3" src="img/watches/2.jpg" alt="">
-                            <div class="star">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h5 class="p-name">Sport Boots</h5>
-                            <h4 class="p-price">$92.00</h4>
-                            <button class="buy-btn">Buy Now</button>
-                        </div>
-                        <div class="product text-center col-lg-3 col-md-4 col-12">
-                            <img class="img-fluid mb-3" src="img/watches/3.jpg" alt="">
-                            <div class="star">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h5 class="p-name">Sport Boots</h5>
-                            <h4 class="p-price">$92.00</h4>
-                            <button class="buy-btn">Buy Now</button>
-                        </div>
-                        <div class="product text-center col-lg-3 col-md-4 col-12">
-                            <img class="img-fluid mb-3" src="img/watches/4.jpg" alt="">
-                            <div class="star">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h5 class="p-name">Sport Boots</h5>
-                            <h4 class="p-price">$92.00</h4>
-                            <button class="buy-btn">Buy Now</button>
-                        </div>
-
-
                     </div>
                 </section>
 
