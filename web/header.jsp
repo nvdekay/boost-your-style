@@ -33,18 +33,7 @@
                                 <li class="nav-item"><a class="${c.id == cid ? " ac tive" : "" } nav-link"
                                         href="product1?cid=${c.id}">${c.name}</a></li>
                             </c:forEach>
-                            <!-- <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#clothes">Clothes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#shoes">Shoes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#watches">Watches</a>
-                    </li> -->
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#footer">Contact Us</a>
                             </li>

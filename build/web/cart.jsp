@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <%@include file="header.jsp" %>
+        <%@include file="header.jsp"%>
         <section id="blog-home" class="pt-5 mt-5 container">
             <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
             <hr>
