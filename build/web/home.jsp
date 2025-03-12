@@ -56,7 +56,6 @@
                             </div>
                             <h5 class="p-name">${p.name}</h5>
                             <h4 class="p-price">$${p.price}</h4>
-                            <button class="buy-btn">Buy Now</button>
                         </div>
                     </c:forEach>
                 </div>
@@ -84,34 +83,10 @@
                             </div>
                             <h5 class="p-name">${p.name}</h5>
                             <h4 class="p-price">$${p.price}</h4>
-                            <button class="buy-btn">Buy Now</button>
                         </div>
                     </c:forEach>
                 </div>
             </c:if>
-        </section>
-
-        <!-- Watches -->
-        <section id="watches" class="my-5">
-            <div class="container text-center mt-5 py-5">
-                <h3>Best Watches</h3>
-                <hr class="mx-auto">
-            </div>
-            <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-3" src="img/watches/1.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Sport Boots</h5>
-                    <h4 class="p-price">$92.00</h4>
-                    <button class="buy-btn">Buy Now</button>
-                </div>
-            </div>
         </section>
 
         <%@include file="footer.jsp" %>

@@ -30,7 +30,7 @@
                                 <a class="${cid == 0 ? " active" : "" } nav-link" href="product1?cid=${0}">All</a>
                             </li>
                             <c:forEach items="${cat}" var="c">
-                                <li class="nav-item"><a class="${c.id == cid ? " active" : "" } nav-link"
+                                <li class="nav-item"><a class="${c.id == cid ? " ac tive" : "" } nav-link"
                                         href="product1?cid=${c.id}">${c.name}</a></li>
                             </c:forEach>
                             <!-- <li class="nav-item">
