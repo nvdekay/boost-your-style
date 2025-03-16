@@ -32,7 +32,7 @@
     <body>
         <%@include file="header.jsp" %>
 
-        <div class="container" style="min-height: 1000px">
+        <div class="container" style="min-height: 1000px; margin-top: 100px">
             <div class="alert alert-success text-center mt-5" role="alert" >
                 <h3>List Products</h3>
                         <table class="table">
