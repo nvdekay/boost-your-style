@@ -43,7 +43,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         SendMailHelper helper = new SendMailHelper();
         helper.sendEmailTo(email, subject, message);
 
-        request.setAttribute("messForgot", "Mật khẩu mới đã được gửi về email của bạn");
+        request.setAttribute("messForgot", "A new password has been sent to your email!!!");
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 

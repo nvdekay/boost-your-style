@@ -44,7 +44,9 @@
         </div>
         <div class="sign-up-link">
             <p>Forgot password? <a href="forgot-password">Forgot Password</a></p>
-            <p>${messForgot}</p>
+            <p style="color: green;
+               font-weight: bold;
+               margin-top: 16px;">${messForgot}</p>
         </div>
     </form>
 </body>

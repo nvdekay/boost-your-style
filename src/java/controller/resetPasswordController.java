@@ -84,7 +84,7 @@ public class resetPasswordController extends HttpServlet {
         }
         if (pass.equals(repass)) {
             adb.UpDatePassWord(pass,logingAccount.getId());
-            request.setAttribute("mess", "Change Pass successfully!");
+            request.setAttribute("mess", "Change password successfully!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
