@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package checkout;
 
 import model.Product;
 
-
-
-
-
-
 public class Cart {
+
     private Product product;
     private int quantity;
 
@@ -39,6 +30,5 @@ public class Cart {
         this.product = product;
         this.quantity = quantity;
     }
-    
-    
+
 }
