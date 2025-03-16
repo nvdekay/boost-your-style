@@ -54,7 +54,7 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <h5 class="p-name">${p.name}</h5>
+                            <h5 class="p-name"> <a href="product-detail?productId=${p.id}"> ${p.name} </a> </h5>
                             <h4 class="p-price">$${p.price}</h4>
                         </div>
                     </c:forEach>

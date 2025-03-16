@@ -1,96 +1,76 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Cart</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+            rel="stylesheet"
+            />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-        <link rel="stylesheet" href="./css/cart.css">
+        <link rel="stylesheet" href="./css/home.css">
     </head>
-
     <body>
-        <%@include file="header.jsp"%>
-        <section id="blog-home" class="pt-5 mt-5 container">
-            <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
-            <hr>
-        </section>
+        <%@include file="header.jsp" %>
 
-        <section id="cart-container" class="container my-5">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <td>Remove</td>
-                        <td>Image</td>
-                        <td>Product</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
-                        <td>Total</td>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                        <td><img src="./img/shoes/1.jpg" alt=""></td>
-                        <td>
-                            <h5>Product Name</h5>
-                        </td>
-                        <td>
-                            <h5>Product Price</h5>
-                        </td>
-                        <td><input class="w-25 pl-1" type="number" value="1"></td>
-                        <td>
-                            <h5>Product Total Price</h5>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="cart-bottom" class="container">
-            <div class="row">
-                <div class="coupon col-lg-6 col-md-6 col-12 mb-4">
-                    <div>
-                        <h5>COUPON</h5>
-                        <p>Enter your coupon code if you have one.</p>
-                        <input type="text" placeholder="Coupon Code">
-                        <button class="ml-auto">APPLY COUPON</button>
-                    </div>
-                </div>
-                <div class="total col-lg-6 col-md-6 col-12 mb-4">
-                    <div>
-                        <h5>CART TOTAL</h5>
-                        <div class="d-flex justify-content-between">
-                            <h6>Subtotal</h6>
-                            <p>Price</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6>Shipping</h6>
-                            <p>Free</p>
-                        </div>
-                        <hr class="second-hr">
-                        <div class="d-flex justify-content-between">
-                            <h6>Total</h6>
-                            <p>Price</p>
-                        </div>
-                        <button class="ml-auto">PROCEED TO CHECKOUT</button>
-                    </div>
-                </div>
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container" style="min-height: 1000px;margin-top: 100px;">
+                <c:choose>
+                    <c:when test="${sessionScope.carts==null||sessionScope.carts.size()==0}">
+                        <h1>List Cart is Empty</h1>
+                    </c:when>
+                    <c:otherwise>
+                        <h3>List Products</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${carts}" var="C">
+                                <form action="update-quantity">
+                                    <tr>
+                                    <input type="hidden" name="productId" value="${C.value.product.id}"/>
+                                        <th scope="row">${C.value.product.id}</th>
+                                        <td>${C.value.product.name}</td>
+                                        <td><img src="${C.value.product.image}" width="50"/></td>
+                                        <td>${C.value.product.price}</td>
+                                        <td><input onchange="this.form.submit()" type="number" name="quantity" value="${C.value.quantity}"/></td>
+                                        <td>${C.value.product.price*C.value.quantity}</td>
+                                        <td><a href="delete-cart?productId=${C.value.product.id}" class="btn btn-outline-danger"><i class="bi bi-trash"></i>Delete</a></td>
+                                    </tr>
+                                </form>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <h3>Total Amount: $${totalMoney}</h3>
+                        <a href="checkout" class="btn btn-success w-25">Check out</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </section>
-
         <%@include file="footer.jsp" %>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-            integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-    crossorigin="anonymous"></script>
-
 </html>

@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
             <div class="container">
-                <a href="home">
+                <a href="managerAccount">
                     <img src="img/logo1.png" alt="" width="200">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -26,32 +25,11 @@
                     <c:set var="cid" value="${requestScope.cid}" />
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="product-list">Products</a>
+                            <a class="nav-link" href="managerAccount">Account Management</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="reset">Reset Password</a>
+                            <a class="nav-link" href="dashboard">Dashboard</a>
                         </li>
-                        <!-- <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#clothes">Clothes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#shoes">Shoes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#watches">Watches</a>
-                </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#footer">Contact Us</a>
-                        </li>
-                        <form action="product-list" class="d-flex" method="get">
-                            <input class="form-control me-2"  name="keyword" type="search" value="${key}" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-dark" type="submit" onclick="this.form.submit()"
-                                    style="margin-left: 10px;">Search</button>
-                        </form>
-
                 </div>
             </div>
             <c:if test="${sessionScope.account!=null}">

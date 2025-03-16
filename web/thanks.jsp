@@ -1,3 +1,8 @@
+<%-- 
+    Document   : thanks
+    Created on : Mar 2, 2022, 5:05:27 PM
+    Author     : Admin
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +15,7 @@
             />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cart</title>
+        <title>Shop Homepage - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -27,50 +32,42 @@
     <body>
         <%@include file="header.jsp" %>
 
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container" style="min-height: 1000px;margin-top: 100px;">
-                <c:choose>
-                    <c:when test="${sessionScope.carts==null||sessionScope.carts.size()==0}">
-                        <h1>List Cart is Empty</h1>
-                    </c:when>
-                    <c:otherwise>
-                        <h3>List Products</h3>
+        <div class="container" style="min-height: 1000px">
+            <div class="alert alert-success text-center mt-5" role="alert" >
+                <h3>List Products</h3>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
                                     <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Total Price</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${carts}" var="C">
-                                <form action="update-quantity">
+                                <c:forEach items="${cartss}" var="C">
                                     <tr>
-                                    <input type="hidden" name="productId" value="${C.value.product.id}"/>
-                                        <th scope="row">${C.value.product.id}</th>
-                                        <td>${C.value.product.name}</td>
-                                        <td><img src="${C.value.product.image}" width="50"/></td>
-                                        <td>${C.value.product.price}</td>
-                                        <td><input onchange="this.form.submit()" type="number" name="quantity" value="${C.value.quantity}"/></td>
-                                        <td>${C.value.product.price*C.value.quantity}</td>
-                                        <td><a href="delete-cart?productId=${C.value.product.id}" class="btn btn-outline-danger"><i class="bi bi-trash"></i>Delete</a></td>
-                                    </tr>
-                                </form>
+                                <input type="hidden" name="productId" value="${C.value.product.id}"/>
+                                <th scope="row">${C.value.product.id}</th>
+                                <td>${C.value.product.name}</td>
+                                <td><img src="${C.value.product.image}" width="50"/></td>
+                                <td>${C.value.product.price}</td>
+                                <td>${C.value.quantity}</td>
+                                <td>${C.value.product.price*C.value.quantity}</td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-                        <h3>Total Amount: $${totalMoney}</h3>
-                        <a href="checkout" class="btn btn-success w-25">Check out</a>
-                    </c:otherwise>
-                </c:choose>
+                        <h3>Total Amount: $${totalPrice}</h3>
+                Order successfully, Thank you very much...
+                <div class="text-center mt-2">
+                    <a class="btn btn-outline-primary" href="home">Continue Shopping</a>
+                </div>
             </div>
-        </section>
+        </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>
+
