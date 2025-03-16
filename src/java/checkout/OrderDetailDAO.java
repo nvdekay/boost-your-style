@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package checkout;
 
 import dal.DBContext;
@@ -16,11 +11,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Admin
- */
-public class OrderDetailDBcontext extends DBContext {
+public class OrderDetailDAO extends DBContext {
 
     public void saveCart(int orderId, Map<String, Cart> carts) {
         try {
@@ -43,11 +34,11 @@ public class OrderDetailDBcontext extends DBContext {
                 ResultSet rs = getProductQuantityStm.executeQuery();
                 int productQuantity = 0;
                 while (rs.next()) {
-                     productQuantity = rs.getInt("quantity");
+                    productQuantity = rs.getInt("quantity");
                 }
                 Cart cart = entry.getValue();
                 // Validate product's quantity
-                if(cart.getQuantity() > productQuantity){
+                if (cart.getQuantity() > productQuantity) {
                     return;
                 }
                 stm.setInt(1, orderId);
@@ -56,8 +47,8 @@ public class OrderDetailDBcontext extends DBContext {
                 stm.setDouble(4, cart.getProduct().getPrice());
                 stm.setDouble(5, cart.getQuantity());
                 String updateProductQuantitySql = "UPDATE [products]\n"
-                    + "   SET [quantity] = [products].quantity - ?\n"
-                    + " WHERE id = ?";
+                        + "   SET [quantity] = [products].quantity - ?\n"
+                        + " WHERE id = ?";
                 PreparedStatement updatePQuantityStm = connection.prepareStatement(updateProductQuantitySql);
                 updatePQuantityStm.setInt(1, cart.getQuantity());
                 updatePQuantityStm.setString(2, productId);
@@ -66,7 +57,7 @@ public class OrderDetailDBcontext extends DBContext {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(OrderDetailDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +80,7 @@ public class OrderDetailDBcontext extends DBContext {
                 OrderDetails.add(order);
             }
         } catch (Exception ex) {
-            Logger.getLogger(OrderDetailDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return OrderDetails;
     }
@@ -104,11 +95,12 @@ public class OrderDetailDBcontext extends DBContext {
             stm.setInt(1, id);
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(OrderDetailDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static void main(String[] args) {
-        OrderDetailDBcontext a = new OrderDetailDBcontext();
+        OrderDetailDAO a = new OrderDetailDAO();
         a.delete(19);
     }
 }

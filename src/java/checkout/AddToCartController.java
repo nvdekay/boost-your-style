@@ -32,7 +32,7 @@ public class AddToCartController extends BaseRequiredAuthenController {
                 /* TODO output your page here. You may use following sample code. */
                 String productId = request.getParameter("productId");
                 // validate product's quantity
-                ProductDBContext productDBContext = new ProductDBContext();
+                ProductDAO productDBContext = new ProductDAO();
                 Product product = productDBContext.getProductById(productId);
                 if(product.getQuantity() <= 0){
                     request.setAttribute("message", "Hết hàng");

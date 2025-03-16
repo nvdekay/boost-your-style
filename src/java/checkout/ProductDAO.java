@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package checkout;
 
 import productlist.*;
@@ -18,7 +13,7 @@ import java.util.logging.Logger;
 import model.Category;
 import model.Product;
 
-public class ProductDBContext extends DBContext {
+public class ProductDAO extends DBContext {
 
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();

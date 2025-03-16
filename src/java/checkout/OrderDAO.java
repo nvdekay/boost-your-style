@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package checkout;
 
 import dal.DBContext;
@@ -15,13 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class OrderDAO extends DBContext {
 
-
-/**
- *
- * @author Admin
- */
-public class OrderDBcontext extends DBContext{
     public int createReturnId(Order order) {
         try {
             String sql = "INSERT INTO [dbo].[Orders]\n"
@@ -42,10 +32,11 @@ public class OrderDBcontext extends DBContext{
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(OrderDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+
     public List<Order> getAllOrder() {
         List<Order> Orders = new ArrayList<>();
         try {
@@ -62,7 +53,7 @@ public class OrderDBcontext extends DBContext{
                 Orders.add(order);
             }
         } catch (Exception ex) {
-            Logger.getLogger(OrderDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Orders;
     }

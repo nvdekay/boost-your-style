@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package checkout;
 
-
-
-
 public class Order {
-    
+
     private int id;
     private int accountId;
     private double totalPrice;
@@ -19,7 +11,7 @@ public class Order {
     public Order() {
     }
 
-    public Order( int accountId, double totalPrice, String note) {
+    public Order(int accountId, double totalPrice, String note) {
         this.accountId = accountId;
         this.totalPrice = totalPrice;
         this.note = note;
@@ -27,7 +19,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", accountId=" + accountId + ", totalPrice=" + totalPrice + ", note=" + note + ", createdDate=" + createdDate + ", shippingId=" ;
+        return "Order{" + "id=" + id + ", accountId=" + accountId + ", totalPrice=" + totalPrice + ", note=" + note + ", createdDate=" + createdDate + ", shippingId=";
     }
 
     public int getId() {
