@@ -4,7 +4,7 @@
  */
 package controller;
 
-import customermanagement.AcountDBContext;
+import customermanagement.AcountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -86,7 +86,7 @@ public class UserRegisterController extends HttpServlet {
             request.setAttribute("mess", "Mật Khẩu Không Khớp");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            AcountDBContext adb = new AcountDBContext();
+            AcountDAO adb = new AcountDAO();
             Account a = adb.checkAccountExist(user);
             // ktra tai khoan co trong he thogn hay ko
             if (a == null) {

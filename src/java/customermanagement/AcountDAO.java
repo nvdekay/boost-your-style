@@ -12,7 +12,7 @@ import model.Account;
 import model.Product;
 import model.Role;
 
-public class AcountDBContext extends DBContext {
+public class AcountDAO extends DBContext {
 
     public Account checkAccountExist(String username) {
         try {
@@ -29,7 +29,7 @@ public class AcountDBContext extends DBContext {
                 return a;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -46,7 +46,7 @@ public class AcountDBContext extends DBContext {
                 list.add(account);
             }
         } catch (Exception ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class AcountDBContext extends DBContext {
                 list.add(account);
             }
         } catch (Exception ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -98,7 +98,7 @@ public class AcountDBContext extends DBContext {
                 list.add(account);
             }
         } catch (Exception ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list.size();
     }
@@ -113,7 +113,7 @@ public class AcountDBContext extends DBContext {
             stm.setInt(2, id);
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -143,7 +143,7 @@ public class AcountDBContext extends DBContext {
             stm.setString(5, account.getPhoneNumber());
             return stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
@@ -159,7 +159,7 @@ public class AcountDBContext extends DBContext {
             stm.setInt(2, account.getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(AcountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

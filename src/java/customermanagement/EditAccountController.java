@@ -36,7 +36,7 @@ public class EditAccountController extends HttpServlet {
             account.setId(Integer.parseInt(request.getParameter("id")));
             account.setActive(Boolean.parseBoolean(request.getParameter("active")));
 
-            AcountDBContext adb = new AcountDBContext();
+            AcountDAO adb = new AcountDAO();
             adb.updateAccount(account);
             response.sendRedirect("managerAccount");
         } else {

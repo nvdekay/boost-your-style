@@ -1,6 +1,6 @@
 package forgotpassword;
 
-import customermanagement.AcountDBContext;
+import customermanagement.AcountDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,7 +23,7 @@ public class ForgotPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
-        AcountDBContext acountDBContext = new AcountDBContext();
+        AcountDAO acountDBContext = new AcountDAO();
         Account account = acountDBContext.checkAccountExist(email);
         // Kiểm tra email có tồn tại không
         if (account == null) {

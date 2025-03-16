@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package customermanagement;
 
 import java.io.IOException;
@@ -16,10 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Account;
 
-/**
- *
- * @author Admin
- */
 @WebServlet(name = "ManagerAccountController", urlPatterns = {"/managerAccount"})
 public class ManagerAccountController extends HttpServlet {
 
@@ -27,7 +18,7 @@ public class ManagerAccountController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getSession().getAttribute("account") != null && request.getSession().getAttribute("role_admin") != null) {
-            AcountDBContext acountDBContext = new AcountDBContext();
+            AcountDAO acountDBContext = new AcountDAO();
             // page
             final int PAGE_SIZE = 3;
             int page = 1;
@@ -75,22 +66,12 @@ public class ManagerAccountController extends HttpServlet {
             Account account = new Account(username, email, address, phoneNumber, password);
 
             // Gọi phương thức insert
-            AcountDBContext db = new AcountDBContext();
+            AcountDAO db = new AcountDAO();
             db.insertAccount(account);
             response.sendRedirect("managerAccount?page=1");
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

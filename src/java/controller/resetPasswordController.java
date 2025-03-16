@@ -5,7 +5,7 @@
 
 package controller;
 
-import customermanagement.AcountDBContext;
+import customermanagement.AcountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -76,7 +76,7 @@ public class resetPasswordController extends HttpServlet {
         Account logingAccount = (Account) session.getAttribute("account");
         String pass = request.getParameter("newPassword");
         String repass = request.getParameter("confirmPassword");
-        AcountDBContext adb = new AcountDBContext();
+        AcountDAO adb = new AcountDAO();
         if (!pass.equals(repass)) {
             request.setAttribute("mess", "password does not match!");
             request.getRequestDispatcher("change-newpassword.jsp").forward(request, response);
