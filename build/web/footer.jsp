@@ -16,9 +16,9 @@
                 <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
                     <h5 class="pb-2">Featured</h5>
                     <ul class="text-uppercase list-unstyled">
-                        <li><a href="#">clothes</a></li>
-                        <li><a href="#">watches</a></li>
-                        <li><a href="#">shoes</a></li>
+                        <li><a href="#" style="text-decoration: none">clothes</a></li>
+                        <li><a href="#" style="text-decoration: none">watches</a></li>
+                        <li><a href="#" style="text-decoration: none">shoes</a></li>
                     </ul>
                 </div>
                 <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <h6 class="text-uppercase">Phone</h6>
-                        <p>(123) 456 789</p>
+                        <p>(+84) 123 456 789</p>
                     </div>
                     <div>
                         <h6 class="text-uppercase">Email</h6>

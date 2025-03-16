@@ -13,7 +13,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4 rounded" style="max-width: 450px; width: 100%;">
             <div class="text-center">
-                <h2 class="fw-bold text-primary">Change Password</h2>
+                <h2 class="fw-bold text-black">Change Password</h2>
                 <p class="text-muted">Please enter your new password</p>
             </div>
             <form action="reset" method="post">
@@ -26,7 +26,7 @@
                     <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm new password" required>
                 </div>
                 <div class="text-danger text-center mb-3"><b>${mess}</b></div>
-                <button type="submit" class="btn btn-primary w-100">Confirm</button>
+                <button type="submit" class="btn w-100" style="background-color: black; color: white;">Confirm</button>
             </form>
         </div>
     </div>

@@ -37,7 +37,10 @@
 
         <div class="sign-up-link">
             <p>Don't have account? <a href="user-register">Sign Up</a></p>
-            <p>${mess}</p>
+            <p style="color: green;
+               font-weight: bold;
+               font-size: 16px;
+               margin-top: 8px">${mess}</p>
         </div>
         <div class="sign-up-link">
             <p>Forgot password? <a href="forgot-password">Forgot Password</a></p>

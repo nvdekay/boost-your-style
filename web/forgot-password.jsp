@@ -16,7 +16,7 @@
                     <label class="form-label">Email:</label>
                     <input type="email" name="email" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+                <button type="submit" class="btn w-100" style="background-color: black; color: white">Reset Password</button>
             </form>
         </div>
     </div>
