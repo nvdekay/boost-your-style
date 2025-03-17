@@ -12,18 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Product;
 
-@WebServlet(name = "AddToCartController", urlPatterns = {"/add-to-cart"})
-public class AddToCartController extends BaseRequiredAuthenController {
+@WebServlet(name = "AddToCartServlet", urlPatterns = {"/add-to-cart"})
+public class AddToCartServlet extends BaseRequiredAuthenController {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequests(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

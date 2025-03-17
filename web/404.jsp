@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Không thể thực hiện hành động</title>
+        <title>Not able to take action</title>
         <style>
             /* Import font chữ đẹp hơn */
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
