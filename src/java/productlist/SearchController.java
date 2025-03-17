@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package productlist;
 
 import java.io.IOException;
@@ -19,15 +14,6 @@ import model.Product;
 @WebServlet(name = "SearchController", urlPatterns = {"/product-list"})
 public class SearchController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -36,11 +22,11 @@ public class SearchController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String keyword = request.getParameter("keyword") == null ? "" : request.getParameter("keyword");
             int categoryId = 0;
-            
-            try{
+
+            try {
                 categoryId = Integer.parseInt(request.getParameter("categoryId"));
-            }catch(NumberFormatException ex){
-                
+            } catch (NumberFormatException ex) {
+
             }
             // page
             final int PAGE_SIZE = 8;
@@ -52,8 +38,8 @@ public class SearchController extends HttpServlet {
             if (page < 1) {
                 page = 1;
             }
-            
-            int totalProducts = new ProductDBContext().countProducts(keyword , categoryId);
+
+            int totalProducts = new ProductDBContext().countProducts(keyword, categoryId);
             int totalPage = totalProducts / PAGE_SIZE;
             if (totalProducts % PAGE_SIZE != 0) {
                 totalPage += 1;
@@ -61,13 +47,13 @@ public class SearchController extends HttpServlet {
             if (page > totalPage) {
                 page = totalPage;
             }
-            List<Product> listProducts = new ProductDBContext().search(keyword , page , PAGE_SIZE , categoryId);
+            List<Product> listProducts = new ProductDBContext().search(keyword, page, PAGE_SIZE, categoryId);
             request.setAttribute("page", page);
             request.setAttribute("totalPage", totalPage);
-            
+
             List<Category> listCategories = new CategoryDBContext().getAllCategories();
             request.setAttribute("listCategories", listCategories);
-            
+
             request.setAttribute("listProducts", listProducts);
             request.setAttribute("key", keyword);
             request.setAttribute("categoryId", categoryId);
@@ -75,43 +61,16 @@ public class SearchController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
