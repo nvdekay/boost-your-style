@@ -1,11 +1,13 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="./css/footer.css">
         <title>Footer Page</title>
     </head>
+
     <body>
         <!-- FOOTER -->
         <footer class="mt-5 py-5" id="footer">
@@ -56,12 +58,16 @@
                         <p>Copyright ©2025 All Rights Reserved</p>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
-                        <a href="https://www.facebook.com/nvdeekay.07"><i style="margin: auto;" class="fab fa-facebook-f"></i></a>
-                        <a href="https://github.com/nvdekay"><i style="margin: auto;" class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/nvdeekay.07/"><i style="margin: auto;" class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/nvdeekay.07" target="_blank" rel="noopener noreferrer"><i
+                                style="margin: auto;" class="fab fa-facebook-f"></i></a>
+                        <a href="https://github.com/nvdekay" target="_blank" rel="noopener noreferrer"><i
+                                style="margin: auto;" class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/nvdeekay.07/" target="_blank" rel="noopener noreferrer"><i
+                                style="margin: auto;" class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
         </footer>
     </body>
+
 </html>
