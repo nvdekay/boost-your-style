@@ -1,8 +1,3 @@
-<%-- 
-    Document   : viewCart
-    Created on : Feb 23, 2022, 10:32:01 PM
-    Author     : Admin
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,7 +29,7 @@
         <%@include file="header.jsp" %>
 
         <!-- Product section-->
-        <section class="py-5">
+        <section class="mt-5 py-5">
 
             <div class="container" style="min-height: 1000px">
                 <h1>Checkout</h1>
