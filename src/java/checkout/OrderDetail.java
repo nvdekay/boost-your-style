@@ -12,7 +12,8 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(int id, int orderId, String productName, String productImage, double productPrice, int quantity) {
+    public OrderDetail(int id, int orderId, String productName, String productImage, double productPrice,
+            int quantity) {
         this.id = id;
         this.orderId = orderId;
         this.productName = productName;
@@ -71,7 +72,8 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "OrderDetail{" + "id=" + id + ", orderId=" + orderId + ", productName=" + productName + ", productImage=" + productImage + ", productPrice=" + productPrice + ", quantity=" + quantity + '}';
+        return "OrderDetail{" + "id=" + id + ", orderId=" + orderId + ", productName=" + productName + ", productImage="
+                + productImage + ", productPrice=" + productPrice + ", quantity=" + quantity + '}';
     }
 
 }

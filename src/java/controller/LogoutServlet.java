@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
+@WebServlet(name = "LogoutServlet", urlPatterns = { "/logout" })
 public class LogoutServlet extends HttpServlet {
 
     @Override

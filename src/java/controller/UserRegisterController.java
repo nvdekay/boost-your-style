@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package controller;
 
 import customermanagement.AcountDAO;
@@ -15,10 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Account;
 
-@WebServlet(name = "UserRegisterController", urlPatterns = {"/user-register"})
+@WebServlet(name = "UserRegisterController", urlPatterns = { "/user-register" })
 public class UserRegisterController extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -27,7 +23,7 @@ public class UserRegisterController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserRegisterController</title>");            
+            out.println("<title>Servlet UserRegisterController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UserRegisterController at " + request.getContextPath() + "</h1>");
@@ -36,14 +32,12 @@ public class UserRegisterController extends HttpServlet {
         }
     }
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("signup.jsp").forward(request, response);
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
