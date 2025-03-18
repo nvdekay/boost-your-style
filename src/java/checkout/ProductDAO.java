@@ -26,7 +26,7 @@ public class ProductDAO extends DBContext {
                 list.add(product);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -59,7 +59,7 @@ public class ProductDAO extends DBContext {
                 list.add(product);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -80,7 +80,7 @@ public class ProductDAO extends DBContext {
                 list.add(product);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -95,7 +95,7 @@ public class ProductDAO extends DBContext {
                 return rs.getInt(1);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
@@ -114,7 +114,7 @@ public class ProductDAO extends DBContext {
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -130,7 +130,7 @@ public class ProductDAO extends DBContext {
                 return product;
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -151,7 +151,7 @@ public class ProductDAO extends DBContext {
                 list.add(product);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -182,7 +182,7 @@ public class ProductDAO extends DBContext {
             stm.setInt(6, product.getCategory().getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -194,7 +194,7 @@ public class ProductDAO extends DBContext {
             stm.setInt(1, id);
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -216,7 +216,7 @@ public class ProductDAO extends DBContext {
             stm.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -232,7 +232,7 @@ public class ProductDAO extends DBContext {
                 list.add(product);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

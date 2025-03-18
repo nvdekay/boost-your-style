@@ -57,7 +57,7 @@ public class SearchByCategoryController extends HttpServlet {
         request.setAttribute("page", page);
         request.setAttribute("totalPage", totalPage);
         List<Product> listProducts = new ProductDBContext().getProductsByCategoryId(categoryId);
-        List<Category> listCategories = new CategoryDBContext().getAllCategories();
+        List<Category> listCategories = new CategoryDAO().getAllCategories();
         request.setAttribute("listCategories", listCategories);
         request.setAttribute("listProducts", listProducts);
         request.setAttribute("tag", categoryId);

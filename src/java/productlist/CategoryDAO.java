@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package productlist;
 
 import dal.DBContext;
@@ -17,7 +12,7 @@ import java.util.logging.Logger;
 import model.Account;
 import model.Category;
 
-public class CategoryDBContext extends DBContext { //thao tác với bảng category
+public class CategoryDAO extends DBContext { //thao tác với bảng category
 
     public List<Category> getAllCategories() {
         List<Category> list = new ArrayList<>();
@@ -33,7 +28,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
                 list.add(category);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -57,7 +52,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
                 list.add(category);
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -72,7 +67,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
             stm.setString(1, name);
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +84,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
                 return category;
             }
         } catch (Exception ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -104,7 +99,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
             stm.setInt(2, category.getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -116,7 +111,7 @@ public class CategoryDBContext extends DBContext { //thao tác với bảng cate
             stm.setInt(1, id);
             stm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

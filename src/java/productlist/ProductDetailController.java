@@ -19,7 +19,7 @@ public class ProductDetailController extends HttpServlet {
         try {
             String productId = request.getParameter("productId");
             ProductDBContext productDBContext = new ProductDBContext();
-            CategoryDBContext categoryDBContext = new CategoryDBContext();
+            CategoryDAO categoryDBContext = new CategoryDAO();
             Product product = productDBContext.getProductById(productId);
             Category category = categoryDBContext.getCategoryById(product.getCategory().getId());
             product.setCategory(category);
