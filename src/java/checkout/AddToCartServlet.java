@@ -20,7 +20,6 @@ public class AddToCartServlet extends BaseRequiredAuthenController {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             if (request.getSession().getAttribute("account") != null) {
-                /* TODO output your page here. You may use following sample code. */
                 String productId = request.getParameter("productId");
                 // validate product's quantity
                 ProductDAO productDBContext = new ProductDAO();
