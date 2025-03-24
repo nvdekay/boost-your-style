@@ -12,7 +12,7 @@
     </head>
     <body>
         <%@include file="admin_header.jsp" %>
-        <div class="container mt-5" style="margin-top: 200px !important; ">
+        <div class="container mt-5" style="margin-top: 200px !important; "> 
             <h2 class="text-center">Thống kê doanh thu</h2>
             <div class="row mt-4">
                 <div class="col-md-4">

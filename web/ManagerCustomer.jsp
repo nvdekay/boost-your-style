@@ -210,9 +210,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="#">
-                <button type="button" class="btn btn-primary" onclick="back()">Back to home</button>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-                </body>
-                </html>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
