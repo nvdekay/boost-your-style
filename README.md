@@ -459,3 +459,341 @@ Categories (1) ─── (N) Products
 
 #### Dashboard (`/dashboard`)
 - Overview statistics (orders, customers, etc.) via `DashboardDAO`.
+
+---
+
+## 10. URL Routes & Controllers
+
+### Public Routes
+
+| Method | URL | Controller | Description |
+|--------|-----|-----------|-------------|
+| GET | `/home` | `HomeServlet` | Homepage with newest & oldest products |
+| GET | `/login` | `LoginServlet` | Show login form |
+| POST | `/login` | `LoginServlet` | Process login credentials |
+| GET | `/logout` | `LogoutServlet` | Logout and invalidate session |
+| GET | `/user-register` | `UserRegisterController` | Show registration form |
+| POST | `/user-register` | `UserRegisterController` | Process new account creation |
+| GET | `/forgot-password` | `ForgotPasswordServlet` | Show forgot password form |
+| POST | `/forgot-password` | `ForgotPasswordServlet` | Send recovery email |
+| GET | `/reset` | `resetPasswordController` | Show reset password form |
+| POST | `/reset` | `resetPasswordController` | Process password reset |
+| GET | `/product-list` | `SearchController` | Product listing, search, category filter |
+| GET | `/product-detail` | `ProductDetailController` | Single product detail page |
+
+### Authenticated Customer Routes
+
+| Method | URL | Controller | Description |
+|--------|-----|-----------|-------------|
+| GET/POST | `/add-to-cart` | `AddToCartServlet` | Add product to session cart |
+| GET | `/carts` | `CartController` | View shopping cart |
+| POST | `/update-quantity` | `UpdateCartQuantityController` | Update item quantity |
+| GET | `/delete-cart` | `DeleteCartController` | Remove item from cart |
+| GET/POST | `/checkout` | `CheckOutController` | Checkout page & place order |
+| GET/POST | `/thank` | `ThankController` | Order success confirmation |
+
+### Admin Routes
+
+| Method | URL | Controller | Description |
+|--------|-----|-----------|-------------|
+| GET/POST | `/managerAccount` | `ManagerAccountController` | Customer management table |
+| GET/POST | `/edit-account` | `EditAccountController` | Edit a specific account |
+| GET | `/dashboard` | `DashboardServlet` | Admin dashboard overview |
+
+---
+
+## 11. Authentication & Authorization
+
+### Login Flow
+
+```
+User submits /login (POST)
+       │
+       ▼
+DAO.check(username, password)
+  → SELECT * FROM Account WHERE Username=? AND Password=? AND active=1
+       │
+       ├── Not found → Redirect /login with error message
+       │
+       └── Found → Store Account in HttpSession("account")
+                       │
+                       ├── RoleID == 1 (Admin)
+                       │     → Set session("role_admin") = "yes"
+                       │     → Redirect to /managerAccount
+                       │
+                       └── RoleID == 2 (Customer)
+                             → Redirect to /home
+```
+
+### Session Structure
+
+| Session Key | Type | Description |
+|-------------|------|-------------|
+| `account` | `Account` | Logged-in user object |
+| `carts` | `LinkedHashMap<String, Cart>` | Shopping cart (productId → Cart) |
+| `role_admin` | `String` | `"yes"` if the user is an admin |
+
+### Cookie-Based Remember Me
+
+When "Remember Me" is checked on login:
+- `cuser` cookie — stores username, expires in 30 days
+- `cpass` cookie — stores password, expires in 30 days
+- `cremember` cookie — stores `"1"` flag, expires in 30 days
+
+On next visit, `LoginServlet` reads these cookies and pre-fills or auto-authenticates the form.
+
+### Authorization Checks
+
+Controllers manually check session attributes:
+
+```java
+// Check if user is logged in
+if (session.getAttribute("account") == null) {
+    response.sendRedirect("login");
+    return;
+}
+
+// Check if user is admin
+if (session.getAttribute("role_admin") == null) {
+    response.sendRedirect("home");
+    return;
+}
+```
+
+### Password Recovery Flow
+
+```
+1. User visits /forgot-password and submits their registered email
+2. ForgotPasswordServlet queries the database for an account with that email
+3. If found:
+   a. Generates a random password (Base64-encoded random bytes)
+   b. Updates the account's password in the database
+   c. Sends an email via Gmail SMTP (SendMailHelper) with the new password
+4. User receives the new password and can log in, then change it
+```
+
+---
+
+## 12. Shopping Cart System
+
+The cart is entirely session-based — no database persistence until checkout.
+
+### Cart Data Structure
+
+```java
+// Stored in HttpSession
+LinkedHashMap<String, Cart> carts = new LinkedHashMap<>();
+// Key: productId (String)
+// Value: Cart object { Product product, int quantity }
+```
+
+### Cart Operations
+
+| Operation | Controller | Logic |
+|-----------|-----------|-------|
+| **Add** | `AddToCartServlet` | If product already in cart → increment quantity; else → add new entry |
+| **View** | `CartController` | Load cart from session, calculate per-item and total price |
+| **Update** | `UpdateCartQuantityController` | Adjust quantity for a given productId |
+| **Remove** | `DeleteCartController` | Remove entry from the LinkedHashMap |
+| **Checkout** | `CheckOutController` | Create DB records, deduct stock, clear cart from session |
+
+### Total Price Calculation (CartController)
+
+```java
+double totalMoney = 0;
+for (Map.Entry<String, Cart> entry : carts.entrySet()) {
+    Cart c = entry.getValue();
+    totalMoney += c.getProduct().getPrice() * c.getQuantity();
+}
+request.setAttribute("totalMoney", totalMoney);
+```
+
+---
+
+## 13. Admin Panel
+
+### Customer Management (`ManagerAccountController`)
+
+- Lists all accounts from the `Account` table
+- **Pagination:** 3 accounts per page (configurable in `AcountDAO`)
+- **Search/filter** support
+- Buttons to **edit** or **deactivate** each account
+- Admin can manually **create** new customer accounts
+
+### Dashboard (`DashboardServlet`)
+
+The dashboard provides a high-level overview using `DashboardDAO`:
+- Total number of customers
+- Total number of orders
+- Revenue summary
+- Recent activity
+
+### Access Control
+
+Admin pages check `session.getAttribute("role_admin")`. If the user is not an admin, they are redirected to `/home`.
+
+---
+
+## 14. Email Service
+
+Password recovery emails are sent via **Gmail SMTP**.
+
+### Configuration (`GoogleInfomation.java`)
+
+```java
+// Edit these values before deploying
+public static final String EMAIL    = "your-email@gmail.com";
+public static final String PASSWORD = "your-app-password";
+```
+
+> **Important:** Use a **Gmail App Password** (not your main Gmail password). Enable 2FA and generate an App Password under Google Account → Security → App Passwords.
+
+### SendMailHelper
+
+```java
+SendMailHelper.sendEmailTo(
+    recipientEmail,    // destination address
+    subject,           // email subject
+    body               // HTML or plain-text body
+);
+```
+
+**SMTP Settings:**
+| Property | Value |
+|----------|-------|
+| Host | `smtp.gmail.com` |
+| Port | `587` |
+| Auth | `true` |
+| STARTTLS | `true` |
+
+---
+
+## 15. Frontend Design
+
+### Layout Structure
+
+Every page includes shared `header.jsp` and `footer.jsp` fragments via `<jsp:include>`.
+
+```
+┌──────────────────────────────┐
+│           header.jsp          │  ← Global navbar (logo, nav links, cart icon)
+├──────────────────────────────┤
+│                               │
+│       Page-specific JSP       │
+│       (home, products, etc.)  │
+│                               │
+├──────────────────────────────┤
+│           footer.jsp          │  ← Links, social media, copyright
+└──────────────────────────────┘
+```
+
+### Color Scheme
+
+| Usage | Color |
+|-------|-------|
+| Primary text | `#1d1d1d` (near-black) |
+| Accent / CTA | `#fb774b` (orange) |
+| Background | `#ffffff` (white) |
+| Muted text | `#d8d8d8` (light gray) |
+| Star ratings | Gold yellow |
+| Badges | Bootstrap blue |
+
+### Typography
+
+- **Font family:** Poppins (via Google Fonts)
+- Imported in each page: `@import url('https://fonts.googleapis.com/css?family=Poppins')`
+
+### Responsive Breakpoints (Bootstrap 4)
+
+| Class suffix | Screen width |
+|-------------|-------------|
+| `-lg` | ≥ 992px (desktop) |
+| `-md` | ≥ 768px (tablet) |
+| `-sm` | ≥ 576px (large phone) |
+| (default) | < 576px (mobile) |
+
+### CSS Files
+
+| File | Scope |
+|------|-------|
+| `header.css` | Navbar, logo, menu links, cart icon |
+| `home.css` | Hero section, product cards, star ratings |
+| `login.css` | Login form layout and inputs |
+| `signup.css` | Registration form styling |
+| `product.css` | Product detail page |
+| `cart.css` | Cart table and summary box |
+| `footer.css` | Footer columns and social links |
+
+---
+
+## 16. Configuration Reference
+
+### Database Connection (`src/java/dal/DBContext.java`)
+
+```java
+private static final String URL      = "jdbc:sqlserver://localhost:1433;databaseName=BoostYourStyleDB";
+private static final String USERNAME = "sa";
+private static final String PASSWORD = "123";
+private static final String DRIVER   = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+```
+
+Change these values to match your local SQL Server setup.
+
+### Tomcat Deployment Context (`web/WEB-INF/context.xml`)
+
+```xml
+<Context path="/boostyourstyle" />
+```
+
+The application is deployed at: `http://localhost:8080/boostyourstyle/`
+
+### Web Application Descriptor (`web/WEB-INF/web.xml`)
+
+```xml
+<!-- Jakarta EE 6.0 -->
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee">
+    <!-- Filter: LoginFilter — guards /add.jsp and /add -->
+    <!-- Remaining servlet mappings are annotation-based (@WebServlet) -->
+</web-app>
+```
+
+### Default Admin Account
+
+After running the database script, a default admin account should be seeded:
+
+| Field | Value |
+|-------|-------|
+| RoleID | `1` (Admin) |
+| active | `1` |
+
+Check `database/BoostYourStyleDB.sql` for the default credentials.
+
+---
+
+## 17. Team Members
+
+This project was developed as a team assignment for **PRJ301 — Java Web Application Development** at **FPT University, Spring 2026 semester (SE1928)**.
+
+| Member | Role |
+|--------|------|
+| Team Member 1 | Backend / Controllers |
+| Team Member 2 | Frontend / JSP Views |
+| Team Member 3 | Database Design / DAOs |
+| Team Member 4 | Authentication / Security |
+| Team Member 5 | Integration & Testing |
+
+---
+
+## Notes & Known Limitations
+
+- **Passwords are stored as plain text.** In production, use `BCrypt` or `PBKDF2` for password hashing.
+- **Database credentials are hardcoded** in `DBContext.java`. Use environment variables or a properties file for production deployments.
+- **Gmail credentials are hardcoded** in `GoogleInfomation.java`. Move to environment variables before deploying.
+- **Cart is session-based** — cart contents are lost if the server restarts or the session expires.
+- **LoginFilter is partially disabled** — authentication enforcement should be reviewed before production use.
+- **No CSRF protection** — consider adding CSRF tokens to all POST forms.
+- **No input sanitization for XSS** — JSP pages should use `<c:out>` or JSTL escaping for all user-controlled data.
+
+---
+
+*Built with Java Servlet/JSP · Bootstrap 4 · SQL Server · Apache Tomcat*
