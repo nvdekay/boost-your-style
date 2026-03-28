@@ -1,6 +1,6 @@
 # 🛍️ Boost Your Style — Ứng Dụng Thương Mại Điện Tử Thời Trang
 
-> **PRJ301 Assignment — SE1928 | FPT University Spring 2026**
+> **PRJ301 Assignment — SE1928 | FPT University Spring 2025**
 >
 > Website mua sắm thời trang full-stack được xây dựng bằng Java Servlet/JSP, SQL Server và Bootstrap 4.
 
