@@ -1,95 +1,99 @@
-# Boost Your Style — E-Commerce Fashion Web Application
+# Boost Your Style — Ứng Dụng Thương Mại Điện Tử Thời Trang
 
 > **PRJ301 Assignment — SE1928 | FPT University Spring 2026**
 >
-> A full-stack e-commerce shopping website for fashion products built with Java Servlet/JSP, SQL Server, and Bootstrap 4.
+> Website mua sắm thời trang full-stack được xây dựng bằng Java Servlet/JSP, SQL Server và Bootstrap 4.
 
 ---
 
-## Table of Contents
+## Mục Lục
 
-1. [Project Overview](#1-project-overview)
+1. [Tổng Quan Dự Án](#1-tổng-quan-dự-án)
 2. [Tech Stack](#2-tech-stack)
-3. [System Architecture](#3-system-architecture)
-4. [Prerequisites](#4-prerequisites)
-5. [Database Setup](#5-database-setup)
-6. [Installation & Running](#6-installation--running)
-7. [Project Structure](#7-project-structure)
+3. [Kiến Trúc Hệ Thống](#3-kiến-trúc-hệ-thống)
+4. [Yêu Cầu Cài Đặt](#4-yêu-cầu-cài-đặt)
+5. [Cài Đặt Database](#5-cài-đặt-database)
+6. [Hướng Dẫn Chạy Dự Án](#6-hướng-dẫn-chạy-dự-án)
+7. [Cấu Trúc Thư Mục](#7-cấu-trúc-thư-mục)
 8. [Database Schema](#8-database-schema)
-9. [Features & Functionality](#9-features--functionality)
+9. [Tính Năng Hệ Thống](#9-tính-năng-hệ-thống)
 10. [URL Routes & Controllers](#10-url-routes--controllers)
-11. [Authentication & Authorization](#11-authentication--authorization)
-12. [Shopping Cart System](#12-shopping-cart-system)
+11. [Xác Thực & Phân Quyền](#11-xác-thực--phân-quyền)
+12. [Hệ Thống Giỏ Hàng](#12-hệ-thống-giỏ-hàng)
 13. [Admin Panel](#13-admin-panel)
-14. [Email Service](#14-email-service)
-15. [Frontend Design](#15-frontend-design)
-16. [Configuration Reference](#16-configuration-reference)
-17. [Team Members](#17-team-members)
+14. [Dịch Vụ Email](#14-dịch-vụ-email)
+15. [Giao Diện Frontend](#15-giao-diện-frontend)
+16. [Cấu Hình Hệ Thống](#16-cấu-hình-hệ-thống)
+17. [Thành Viên Nhóm](#17-thành-viên-nhóm)
 
 ---
 
-## 1. Project Overview
+## 1. Tổng Quan Dự Án
 
-**Boost Your Style** is an e-commerce web application for a fashion retail store, allowing customers to browse products (clothes, shoes, watches, accessories), add them to cart, and complete purchases. The project is built as a standard Java EE web application following the **MVC (Model-View-Controller)** pattern.
+**Boost Your Style** là ứng dụng thương mại điện tử dành cho cửa hàng thời trang, cho phép khách hàng duyệt sản phẩm (quần áo, giày dép, đồng hồ, phụ kiện), thêm vào giỏ hàng và đặt mua. Dự án được xây dựng theo mô hình **MVC (Model-View-Controller)** chuẩn của Java EE.
 
-### What the app does
+### Vai trò người dùng
 
-| Actor | Capabilities |
-|-------|-------------|
-| **Guest** | Browse products, search by keyword, filter by category |
-| **Customer** | Register, login, manage account, add to cart, checkout, track orders |
-| **Admin** | Manage customer accounts, view dashboard, activate/deactivate users |
+| Vai trò | Chức năng |
+|---------|-----------|
+| **Guest** (Khách) | Duyệt sản phẩm, tìm kiếm theo tên, lọc theo danh mục |
+| **Customer** (Khách hàng) | Đăng ký, đăng nhập, quản lý tài khoản, thêm vào giỏ hàng, đặt hàng |
+| **Admin** (Quản trị viên) | Quản lý tài khoản người dùng, xem dashboard, kích hoạt/vô hiệu hoá tài khoản |
 
 ---
 
 ## 2. Tech Stack
 
 ### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Java | 8+ | Core programming language |
-| Jakarta EE Servlet | 6.0 | HTTP request handling, routing |
-| JSP + JSTL | 1.2 | Server-side templating |
-| JDBC | — | Direct SQL database access |
-| Microsoft SQL Server JDBC | — | SQL Server connector (`com.microsoft.sqlserver.jdbc.SQLServerDriver`) |
-| JavaMail API | — | Email delivery via Gmail SMTP |
-| Apache Tomcat | 9+ | Application server |
-| Apache Ant | — | Build automation |
+
+| Công nghệ | Phiên bản | Mục đích |
+|-----------|-----------|----------|
+| Java | 8+ | Ngôn ngữ lập trình chính |
+| Jakarta EE Servlet | 6.0 | Xử lý HTTP request, định tuyến URL |
+| JSP + JSTL | 1.2 | Template engine phía server |
+| JDBC | — | Truy cập database trực tiếp qua SQL |
+| Microsoft SQL Server JDBC | — | Driver kết nối SQL Server (`com.microsoft.sqlserver.jdbc.SQLServerDriver`) |
+| JavaMail API | — | Gửi email qua Gmail SMTP |
+| Apache Tomcat | 9+ | Application server (Servlet container) |
+| Apache Ant | — | Build & deploy tự động |
 
 ### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| HTML5 | — | Markup |
-| CSS3 | — | Custom styling |
-| JavaScript | ES5+ | Client-side interactivity |
-| Bootstrap | 4.3.1 | Responsive UI framework |
-| Font Awesome | 5.10.0 | Icon library |
-| Google Fonts (Poppins) | — | Typography |
+
+| Công nghệ | Phiên bản | Mục đích |
+|-----------|-----------|----------|
+| HTML5 | — | Cấu trúc trang |
+| CSS3 | — | Tùy chỉnh giao diện |
+| JavaScript | ES5+ | Tương tác phía client |
+| Bootstrap | 4.3.1 | Framework UI responsive |
+| Font Awesome | 5.10.0 | Thư viện icon |
+| Google Fonts (Poppins) | — | Font chữ chính |
 
 ### Database
-| Technology | Details |
-|------------|---------|
-| Microsoft SQL Server | Local instance on port `1433` |
-| Database name | `BoostYourStyleDB` |
-| Default credentials | User: `sa` / Password: `123` |
 
-### Development Tools
-| Tool | Purpose |
-|------|---------|
-| NetBeans IDE | Primary IDE (project files included) |
+| Công nghệ | Chi tiết |
+|-----------|----------|
+| Microsoft SQL Server | Chạy local, cổng `1433` |
+| Tên database | `BoostYourStyleDB` |
+| Thông tin mặc định | User: `sa` / Password: `123` |
+
+### Công Cụ Phát Triển
+
+| Công cụ | Mục đích |
+|---------|----------|
+| NetBeans IDE | IDE chính (project files đã được include) |
 | Apache Ant | Build & deploy (`build.xml`) |
-| SQL Server Management Studio | Database management |
+| SQL Server Management Studio | Quản lý database |
 
 ---
 
-## 3. System Architecture
+## 3. Kiến Trúc Hệ Thống
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                     Client (Browser)                     │
 │              HTML + CSS + JS + Bootstrap                 │
 └────────────────────────┬────────────────────────────────┘
-                         │ HTTP Request/Response
+                         │ HTTP Request / Response
 ┌────────────────────────▼────────────────────────────────┐
 │              Apache Tomcat (Servlet Container)           │
 │                                                         │
@@ -112,59 +116,59 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
-**Pattern:** MVC (Model-View-Controller)
-- **Model** — `src/java/model/` + DAO classes
-- **View** — `web/*.jsp` templates
-- **Controller** — `src/java/controller/` + package-level servlets
+Dự án tuân theo **mô hình MVC** với phân tách rõ ràng:
+- **Model** — `src/java/model/` và các lớp DAO: chứa dữ liệu và logic truy cập database
+- **View** — `web/*.jsp`: các file template hiển thị giao diện cho người dùng
+- **Controller** — `src/java/controller/` và các servlet theo package: xử lý request, điều phối dữ liệu
 
-**Session Management:** HttpSession (server-side)
-**Cart Storage:** HttpSession (LinkedHashMap, non-persistent)
-
----
-
-## 4. Prerequisites
-
-Before setting up the project, ensure the following are installed:
-
-- **JDK 8 or later** — [Download](https://www.oracle.com/java/technologies/downloads/)
-- **Apache Tomcat 9+** — [Download](https://tomcat.apache.org/)
-- **Microsoft SQL Server** (Developer or Express edition) — [Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-- **SQL Server Management Studio (SSMS)** — For database management
-- **NetBeans IDE 12+** (recommended) or any IDE supporting Jakarta EE projects — [Download](https://netbeans.apache.org/)
-- **Microsoft JDBC Driver for SQL Server** — Must be added to project classpath
-- **Apache Ant** — [Download](https://ant.apache.org/) (or bundled with NetBeans)
+**Quản lý session:** `HttpSession` phía server
+**Lưu trữ giỏ hàng:** `HttpSession` dùng `LinkedHashMap` — không lưu vào database cho đến khi checkout
 
 ---
 
-## 5. Database Setup
+## 4. Yêu Cầu Cài Đặt
 
-### Step 1 — Create the database
+Trước khi chạy dự án, cần cài đặt đầy đủ các công cụ sau:
 
-Open **SQL Server Management Studio** and connect to your local SQL Server instance.
+- **JDK 8 trở lên** — [Tải về](https://www.oracle.com/java/technologies/downloads/)
+- **Apache Tomcat 9+** — [Tải về](https://tomcat.apache.org/)
+- **Microsoft SQL Server** (bản Developer hoặc Express) — [Tải về](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- **SQL Server Management Studio (SSMS)** — Công cụ quản lý database
+- **NetBeans IDE 12+** (khuyến nghị) hoặc IDE hỗ trợ Jakarta EE — [Tải về](https://netbeans.apache.org/)
+- **Microsoft JDBC Driver for SQL Server** — Phải thêm vào classpath của project
+- **Apache Ant** — [Tải về](https://ant.apache.org/) (đã tích hợp sẵn trong NetBeans)
+
+---
+
+## 5. Cài Đặt Database
+
+### Bước 1 — Tạo database
+
+Mở **SQL Server Management Studio**, kết nối tới SQL Server local và chạy lệnh:
 
 ```sql
 CREATE DATABASE BoostYourStyleDB;
 ```
 
-### Step 2 — Run the schema script
+### Bước 2 — Chạy script tạo bảng
 
-Execute the SQL script located at:
+Thực thi file SQL tại đường dẫn:
 
 ```
 database/BoostYourStyleDB.sql
 ```
 
-This will create all required tables: `Account`, `Categories`, `Products`, `Orders`, `OrderDetail`.
+Script này sẽ tạo toàn bộ 5 bảng: `Account`, `Categories`, `Products`, `Orders`, `OrderDetail`, kèm theo dữ liệu mẫu ban đầu.
 
-If there is a separate query file, also run:
+Nếu có file query bổ sung, chạy tiếp:
 
 ```
 database/querry.sql
 ```
 
-### Step 3 — Verify the connection settings
+### Bước 3 — Kiểm tra thông tin kết nối
 
-By default, `DBContext.java` uses:
+Mặc định trong `DBContext.java`, thông tin kết nối database là:
 
 ```java
 String url  = "jdbc:sqlserver://localhost:1433;databaseName=BoostYourStyleDB";
@@ -172,56 +176,56 @@ String user = "sa";
 String pass = "123";
 ```
 
-Edit `src/java/dal/DBContext.java` to match your local SQL Server credentials if they differ.
+Nếu cấu hình SQL Server trên máy bạn khác, hãy chỉnh sửa file `src/java/dal/DBContext.java` cho phù hợp.
 
 ---
 
-## 6. Installation & Running
+## 6. Hướng Dẫn Chạy Dự Án
 
-### Clone the repository
+### Clone repository
 
 ```bash
 git clone https://github.com/nvdekay/boost-your-style.git
 cd boost-your-style
 ```
 
-### Open in NetBeans
+### Mở trong NetBeans
 
-1. **File → Open Project** → select the cloned folder
-2. NetBeans will detect the Ant-based web project automatically
+1. Chọn **File → Open Project** → trỏ tới thư mục vừa clone
+2. NetBeans sẽ tự nhận diện đây là Ant-based web project
 
-### Add required libraries
+### Thêm thư viện cần thiết
 
-Place the following JAR files in your project's `lib/` folder (or configure via NetBeans Libraries):
+Đặt các file JAR sau vào thư mục `lib/` của project (hoặc cấu hình qua NetBeans Libraries):
 
-| JAR | Purpose |
-|-----|---------|
-| `mssql-jdbc-*.jar` | SQL Server JDBC driver |
-| `javax.mail.jar` / `jakarta.mail.jar` | JavaMail for email |
-| `jstl-1.2.jar` | JSTL tag library |
-| `servlet-api.jar` | Servlet API (provided by Tomcat) |
+| File JAR | Mục đích |
+|----------|----------|
+| `mssql-jdbc-*.jar` | Driver kết nối SQL Server |
+| `javax.mail.jar` / `jakarta.mail.jar` | JavaMail — gửi email |
+| `jstl-1.2.jar` | Thư viện JSTL tag |
+| `servlet-api.jar` | Servlet API (đã có sẵn trong Tomcat) |
 
-### Configure Tomcat in NetBeans
+### Cấu hình Tomcat trong NetBeans
 
-1. **Tools → Servers → Add Server** → Apache Tomcat
-2. Point to your Tomcat installation directory
-3. Set port to `8080` (or your preferred port)
+1. Vào **Tools → Servers → Add Server** → chọn Apache Tomcat
+2. Trỏ tới thư mục cài đặt Tomcat
+3. Đặt cổng là `8080` (hoặc cổng tuỳ ý)
 
 ### Build & Deploy
 
-**Via NetBeans:**
-- Right-click project → **Clean and Build** → **Run**
+**Qua NetBeans:**
+- Chuột phải vào project → **Clean and Build** → **Run**
 
-**Via Ant (command line):**
+**Qua Ant (command line):**
 ```bash
 ant clean
 ant build
 ant run
 ```
 
-### Access the Application
+### Truy cập ứng dụng
 
-Open your browser and navigate to:
+Mở trình duyệt và truy cập:
 
 ```
 http://localhost:8080/boostyourstyle/home
@@ -229,93 +233,93 @@ http://localhost:8080/boostyourstyle/home
 
 ---
 
-## 7. Project Structure
+## 7. Cấu Trúc Thư Mục
 
 ```
 boost-your-style/
 │
 ├── src/
-│   └── java/                          # All backend Java source code
-│       ├── model/                     # Data model classes (POJOs)
-│       │   ├── Account.java           # User account entity
-│       │   ├── Product.java           # Product entity
-│       │   ├── Category.java          # Product category entity
-│       │   └── Role.java              # User role entity (Admin / User)
+│   └── java/                          # Toàn bộ source code Java backend
+│       ├── model/                     # Các lớp Model (POJO — Plain Old Java Object)
+│       │   ├── Account.java           # Entity tài khoản người dùng
+│       │   ├── Product.java           # Entity sản phẩm
+│       │   ├── Category.java          # Entity danh mục sản phẩm
+│       │   └── Role.java              # Entity vai trò (Admin / User)
 │       │
-│       ├── dal/                       # Data Access Layer (base)
-│       │   ├── DBContext.java         # Database connection manager
-│       │   ├── DAO.java               # General-purpose data operations
-│       │   └── ProductDAO.java        # Product queries (search, paginate)
+│       ├── dal/                       # Data Access Layer — lớp nền
+│       │   ├── DBContext.java         # Quản lý kết nối database (JDBC)
+│       │   ├── DAO.java               # Các thao tác dữ liệu chung
+│       │   └── ProductDAO.java        # Truy vấn sản phẩm (tìm kiếm, phân trang)
 │       │
-│       ├── controller/                # Core HTTP controllers
-│       │   ├── HomeServlet.java       # Homepage — newest & oldest products
-│       │   ├── LoginServlet.java      # Login with remember-me cookies
-│       │   ├── LogoutServlet.java     # Session invalidation
-│       │   ├── UserRegisterController.java  # New user registration
-│       │   ├── resetPasswordController.java # Password change
-│       │   ├── SearchServlet.java     # Product search
-│       │   ├── Home1Servlet.java      # Alternative home (legacy)
-│       │   ├── PagingServlet.java     # Pagination helper
-│       │   ├── Product1Servlet.java   # Product list (legacy)
-│       │   └── ProductServlet.java    # Product detail (legacy)
+│       ├── controller/                # Các HTTP Controller chính
+│       │   ├── HomeServlet.java       # Trang chủ — sản phẩm mới & cũ nhất
+│       │   ├── LoginServlet.java      # Đăng nhập + cookie "ghi nhớ"
+│       │   ├── LogoutServlet.java     # Đăng xuất, huỷ session
+│       │   ├── UserRegisterController.java  # Đăng ký tài khoản mới
+│       │   ├── resetPasswordController.java # Đổi mật khẩu
+│       │   ├── SearchServlet.java     # Tìm kiếm sản phẩm
+│       │   ├── Home1Servlet.java      # Trang chủ phiên bản cũ (legacy)
+│       │   ├── PagingServlet.java     # Hỗ trợ phân trang
+│       │   ├── Product1Servlet.java   # Danh sách sản phẩm (legacy)
+│       │   └── ProductServlet.java    # Chi tiết sản phẩm (legacy)
 │       │
-│       ├── productlist/               # Product browsing logic
-│       │   ├── ProductDBContext.java  # Extended product DB operations
-│       │   ├── CategoryDAO.java       # Category CRUD operations
-│       │   ├── ProductDetailController.java   # Single product page
-│       │   ├── SearchController.java  # Search with category filter + pagination
-│       │   └── SearchByCategoryController.java # Browse by category
+│       ├── productlist/               # Logic duyệt & tìm kiếm sản phẩm
+│       │   ├── ProductDBContext.java  # Các thao tác DB mở rộng cho sản phẩm
+│       │   ├── CategoryDAO.java       # CRUD danh mục sản phẩm
+│       │   ├── ProductDetailController.java   # Trang chi tiết 1 sản phẩm
+│       │   ├── SearchController.java  # Tìm kiếm + lọc danh mục + phân trang
+│       │   └── SearchByCategoryController.java # Duyệt theo danh mục
 │       │
-│       ├── checkout/                  # Shopping cart & order processing
-│       │   ├── Cart.java              # Cart item (product + quantity)
-│       │   ├── Order.java             # Order entity
-│       │   ├── OrderDetail.java       # Order line item
-│       │   ├── OrderDAO.java          # Create & retrieve orders
-│       │   ├── OrderDetailDAO.java    # Save & retrieve order details
-│       │   ├── ProductDAO.java        # Stock management (checkout)
-│       │   ├── AddToCartServlet.java  # Add product to session cart
-│       │   ├── CartController.java    # View cart contents & total
-│       │   ├── UpdateCartQuantityController.java # Change item quantity
-│       │   ├── DeleteCartController.java  # Remove item from cart
-│       │   ├── CheckOutController.java    # Place order & clear cart
-│       │   ├── ThankController.java       # Order confirmation
-│       │   └── BaseRequiredAuthenController.java # Auth base class
+│       ├── checkout/                  # Giỏ hàng & xử lý đơn hàng
+│       │   ├── Cart.java              # Item giỏ hàng (sản phẩm + số lượng)
+│       │   ├── Order.java             # Entity đơn hàng
+│       │   ├── OrderDetail.java       # Entity dòng sản phẩm trong đơn hàng
+│       │   ├── OrderDAO.java          # Tạo & lấy đơn hàng từ DB
+│       │   ├── OrderDetailDAO.java    # Lưu & lấy chi tiết đơn hàng
+│       │   ├── ProductDAO.java        # Quản lý tồn kho khi checkout
+│       │   ├── AddToCartServlet.java  # Thêm sản phẩm vào giỏ (session)
+│       │   ├── CartController.java    # Xem giỏ hàng & tính tổng tiền
+│       │   ├── UpdateCartQuantityController.java # Cập nhật số lượng
+│       │   ├── DeleteCartController.java  # Xoá sản phẩm khỏi giỏ
+│       │   ├── CheckOutController.java    # Đặt hàng & xoá giỏ
+│       │   ├── ThankController.java       # Trang xác nhận đặt hàng thành công
+│       │   └── BaseRequiredAuthenController.java # Base class yêu cầu đăng nhập
 │       │
-│       ├── customermanagement/        # Admin: customer management
-│       │   ├── AcountDAO.java         # Account CRUD + pagination
-│       │   ├── ManagerAccountController.java # List & manage customers
-│       │   └── EditAccountController.java    # Edit customer details
+│       ├── customermanagement/        # Admin: quản lý khách hàng
+│       │   ├── AcountDAO.java         # CRUD tài khoản + phân trang
+│       │   ├── ManagerAccountController.java # Danh sách & quản lý khách hàng
+│       │   └── EditAccountController.java    # Chỉnh sửa tài khoản khách hàng
 │       │
 │       ├── dashboard/                 # Admin dashboard
-│       │   ├── DashboardDAO.java      # Dashboard statistics queries
-│       │   └── DashboardServlet.java  # Admin dashboard controller
+│       │   ├── DashboardDAO.java      # Truy vấn thống kê cho dashboard
+│       │   └── DashboardServlet.java  # Controller trang admin dashboard
 │       │
-│       ├── forgotpassword/            # Password recovery flow
-│       │   ├── ForgotPasswordServlet.java  # Forgot-password handler
-│       │   ├── SendMailHelper.java    # Gmail SMTP email sender
-│       │   └── GoogleInfomation.java  # Gmail credentials store
+│       ├── forgotpassword/            # Luồng khôi phục mật khẩu
+│       │   ├── ForgotPasswordServlet.java  # Xử lý quên mật khẩu
+│       │   ├── SendMailHelper.java    # Gửi email qua Gmail SMTP
+│       │   └── GoogleInfomation.java  # Lưu thông tin đăng nhập Gmail
 │       │
-│       └── filter/                    # Servlet filters
-│           ├── LoginFilter.java       # Authentication gate
-│           └── HomeFilter.java        # Home page filter
+│       └── filter/                    # Servlet Filters
+│           ├── LoginFilter.java       # Kiểm tra xác thực trước khi vào trang
+│           └── HomeFilter.java        # Filter cho trang chủ
 │
-├── web/                               # Frontend (JSP, CSS, JS, images)
-│   ├── home.jsp                       # Homepage view
-│   ├── header.jsp                     # Global navigation header
-│   ├── footer.jsp                     # Global footer
-│   ├── login.jsp                      # Login form
-│   ├── signup.jsp                     # Registration form
-│   ├── product-detail.jsp             # Product detail page
-│   ├── list_product.jsp               # Product listing / search results
-│   ├── cart.jsp                       # Shopping cart
-│   ├── checkout.jsp                   # Checkout form
-│   ├── thanks.jsp                     # Order success page
-│   ├── forgot-password.jsp            # Forgot password form
-│   ├── change-newpassword.jsp         # Password reset form
-│   ├── ManagerCustomer.jsp            # Admin: customer management
-│   ├── dashboard.jsp                  # Admin: dashboard
-│   ├── 404.jsp                        # Error / not found page
-│   ├── css/                           # Per-page stylesheets
+├── web/                               # Frontend (JSP, CSS, JS, hình ảnh)
+│   ├── home.jsp                       # Giao diện trang chủ
+│   ├── header.jsp                     # Thanh điều hướng dùng chung
+│   ├── footer.jsp                     # Footer dùng chung
+│   ├── login.jsp                      # Form đăng nhập
+│   ├── signup.jsp                     # Form đăng ký tài khoản
+│   ├── product-detail.jsp             # Trang chi tiết sản phẩm
+│   ├── list_product.jsp               # Danh sách / kết quả tìm kiếm sản phẩm
+│   ├── cart.jsp                       # Giỏ hàng
+│   ├── checkout.jsp                   # Trang thanh toán
+│   ├── thanks.jsp                     # Trang xác nhận đặt hàng thành công
+│   ├── forgot-password.jsp            # Form quên mật khẩu
+│   ├── change-newpassword.jsp         # Form đổi mật khẩu
+│   ├── ManagerCustomer.jsp            # Admin: quản lý khách hàng
+│   ├── dashboard.jsp                  # Admin: trang dashboard
+│   ├── 404.jsp                        # Trang lỗi / không tìm thấy
+│   ├── css/                           # Stylesheet riêng cho từng trang
 │   │   ├── header.css
 │   │   ├── footer.css
 │   │   ├── home.css
@@ -323,23 +327,23 @@ boost-your-style/
 │   │   ├── signup.css
 │   │   ├── product.css
 │   │   └── cart.css
-│   ├── img/                           # Static image assets
-│   │   ├── brand/                     # Brand logo images
-│   │   ├── clothes/                   # Clothing product images
-│   │   ├── watches/                   # Watch product images
-│   │   ├── shoes/                     # Shoe product images
-│   │   ├── featured/                  # Featured/banner images
-│   │   └── cart/                      # Cart-related images
+│   ├── img/                           # Tài nguyên hình ảnh tĩnh
+│   │   ├── brand/                     # Logo các thương hiệu
+│   │   ├── clothes/                   # Ảnh sản phẩm quần áo
+│   │   ├── watches/                   # Ảnh sản phẩm đồng hồ
+│   │   ├── shoes/                     # Ảnh sản phẩm giày dép
+│   │   ├── featured/                  # Ảnh banner/featured
+│   │   └── cart/                      # Ảnh liên quan đến giỏ hàng
 │   └── WEB-INF/
-│       ├── web.xml                    # Servlet & filter mappings
-│       └── context.xml                # Tomcat deployment context
+│       ├── web.xml                    # Cấu hình Servlet & Filter mappings
+│       └── context.xml                # Cấu hình deployment context của Tomcat
 │
 ├── database/
-│   ├── BoostYourStyleDB.sql           # Full database schema + seed data
-│   └── querry.sql                     # Additional SQL queries
+│   ├── BoostYourStyleDB.sql           # Schema đầy đủ + dữ liệu mẫu
+│   └── querry.sql                     # Các câu truy vấn SQL bổ sung
 │
-├── build.xml                          # Apache Ant build script
-├── nbproject/                         # NetBeans project metadata
+├── build.xml                          # Script build Apache Ant
+├── nbproject/                         # Metadata dự án NetBeans
 │   ├── project.xml
 │   ├── project.properties
 │   └── build-impl.xml
@@ -350,254 +354,259 @@ boost-your-style/
 
 ## 8. Database Schema
 
-### Entity Relationship Overview
+### Sơ đồ quan hệ giữa các bảng
 
 ```
 Account (1) ────── (N) Orders (1) ────── (N) OrderDetail
-                                              (stores product snapshot)
+                                              (lưu snapshot sản phẩm lúc đặt)
 
 Categories (1) ─── (N) Products
 ```
 
-### Table Definitions
+### Chi tiết từng bảng
 
-#### `Account`
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `ID` | `INT` | PK, Identity | Auto-increment user ID |
-| `Username` | `NVARCHAR(100)` | NOT NULL | Display name / login name |
-| `Email` | `NVARCHAR(100)` | NOT NULL | Email address |
-| `Address` | `NVARCHAR(100)` | NOT NULL | Delivery address |
-| `PhoneNumber` | `VARCHAR(20)` | NOT NULL | Contact phone |
-| `Password` | `VARCHAR(50)` | NOT NULL | Plain-text password (hashing recommended for production) |
-| `RoleID` | `INT` | NOT NULL | `1` = Admin, `2` = Customer |
-| `Create_At` | `DATETIME` | NULL | Account creation timestamp |
-| `active` | `BIT` | NULL | `1` = active, `0` = disabled |
+#### Bảng `Account` — Tài khoản người dùng
 
-#### `Categories`
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `ID` | `INT` | PK | Category identifier |
-| `Name` | `NVARCHAR(30)` | — | Category name (e.g., Clothes, Shoes, Watches) |
-| `Describe` | `NVARCHAR(MAX)` | — | Category description |
+| Cột | Kiểu dữ liệu | Ràng buộc | Mô tả |
+|-----|-------------|-----------|-------|
+| `ID` | `INT` | PK, Identity | ID tự tăng |
+| `Username` | `NVARCHAR(100)` | NOT NULL | Tên hiển thị / tên đăng nhập |
+| `Email` | `NVARCHAR(100)` | NOT NULL | Địa chỉ email |
+| `Address` | `NVARCHAR(100)` | NOT NULL | Địa chỉ giao hàng |
+| `PhoneNumber` | `VARCHAR(20)` | NOT NULL | Số điện thoại liên hệ |
+| `Password` | `VARCHAR(50)` | NOT NULL | Mật khẩu (plain-text — cần hash trong production) |
+| `RoleID` | `INT` | NOT NULL | `1` = Admin, `2` = Khách hàng |
+| `Create_At` | `DATETIME` | NULL | Thời điểm tạo tài khoản |
+| `active` | `BIT` | NULL | `1` = đang hoạt động, `0` = đã vô hiệu hoá |
 
-#### `Products`
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | `VARCHAR` | PK | Product identifier (string) |
-| `name` | `NVARCHAR(255)` | — | Product name |
-| `quantity` | `INT` | — | Stock quantity |
-| `price` | `FLOAT` | — | Retail price |
-| `releaseDate` | `VARCHAR` | — | Product release date |
-| `describe` | `NVARCHAR(MAX)` | — | Full product description |
-| `image` | `VARCHAR` | — | Image path or URL |
-| `cid` | `INT` | FK → Categories | Category reference |
+#### Bảng `Categories` — Danh mục sản phẩm
 
-#### `Orders`
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | `INT` | PK, Identity | Auto-increment order ID |
-| `account_id` | `INT` | FK → Account | Owning customer |
-| `totalPrice` | `FLOAT` | — | Total order value |
-| `note` | `NVARCHAR(255)` | — | Delivery/order note |
-| `create_date` | `DATE` | DEFAULT `GETDATE()` | Order placement date |
+| Cột | Kiểu dữ liệu | Ràng buộc | Mô tả |
+|-----|-------------|-----------|-------|
+| `ID` | `INT` | PK | ID danh mục |
+| `Name` | `NVARCHAR(30)` | — | Tên danh mục (vd: Clothes, Shoes, Watches) |
+| `Describe` | `NVARCHAR(MAX)` | — | Mô tả danh mục |
 
-#### `OrderDetail`
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | `INT` | PK, Identity | Auto-increment |
-| `order_id` | `INT` | FK → Orders | Parent order |
-| `productName` | `NVARCHAR(255)` | — | Snapshot of product name at time of purchase |
-| `productImage` | `NVARCHAR(255)` | — | Snapshot of product image |
-| `productPrice` | `FLOAT` | — | Snapshot of product price at purchase |
-| `quantity` | `INT` | — | Quantity ordered |
+#### Bảng `Products` — Sản phẩm
 
-> **Note:** OrderDetail stores a snapshot of product data (name, image, price) rather than a live FK to Products. This ensures order history remains accurate even if product data changes.
+| Cột | Kiểu dữ liệu | Ràng buộc | Mô tả |
+|-----|-------------|-----------|-------|
+| `id` | `VARCHAR` | PK | ID sản phẩm (dạng chuỗi) |
+| `name` | `NVARCHAR(255)` | — | Tên sản phẩm |
+| `quantity` | `INT` | — | Số lượng tồn kho |
+| `price` | `FLOAT` | — | Giá bán lẻ |
+| `releaseDate` | `VARCHAR` | — | Ngày ra mắt sản phẩm |
+| `describe` | `NVARCHAR(MAX)` | — | Mô tả chi tiết sản phẩm |
+| `image` | `VARCHAR` | — | Đường dẫn hoặc URL ảnh sản phẩm |
+| `cid` | `INT` | FK → Categories | Tham chiếu đến danh mục |
+
+#### Bảng `Orders` — Đơn hàng
+
+| Cột | Kiểu dữ liệu | Ràng buộc | Mô tả |
+|-----|-------------|-----------|-------|
+| `id` | `INT` | PK, Identity | ID đơn hàng tự tăng |
+| `account_id` | `INT` | FK → Account | Khách hàng đặt hàng |
+| `totalPrice` | `FLOAT` | — | Tổng giá trị đơn hàng |
+| `note` | `NVARCHAR(255)` | — | Ghi chú giao hàng |
+| `create_date` | `DATE` | DEFAULT `GETDATE()` | Ngày đặt hàng |
+
+#### Bảng `OrderDetail` — Chi tiết đơn hàng
+
+| Cột | Kiểu dữ liệu | Ràng buộc | Mô tả |
+|-----|-------------|-----------|-------|
+| `id` | `INT` | PK, Identity | ID tự tăng |
+| `order_id` | `INT` | FK → Orders | Đơn hàng cha |
+| `productName` | `NVARCHAR(255)` | — | Snapshot tên sản phẩm tại thời điểm mua |
+| `productImage` | `NVARCHAR(255)` | — | Snapshot ảnh sản phẩm tại thời điểm mua |
+| `productPrice` | `FLOAT` | — | Snapshot giá sản phẩm tại thời điểm mua |
+| `quantity` | `INT` | — | Số lượng đặt mua |
+
+> **Lưu ý thiết kế:** `OrderDetail` lưu snapshot dữ liệu sản phẩm (tên, ảnh, giá) thay vì tham chiếu trực tiếp vào bảng `Products`. Điều này đảm bảo lịch sử đơn hàng không bị thay đổi kể cả khi thông tin sản phẩm được cập nhật sau này.
 
 ---
 
-## 9. Features & Functionality
+## 9. Tính Năng Hệ Thống
 
-### 9.1 Customer-Facing Features
+### 9.1 Chức Năng Dành Cho Khách Hàng
 
-#### Product Browsing
-- **Homepage** — Displays newest products (sorted by releaseDate DESC) and oldest products (sorted by releaseDate ASC) in separate carousels/sections.
-- **Product Listing** — Full product catalogue with search and category filter. Paginated at 8 products per page.
-- **Search by Name** — Full-text LIKE search across product name and description.
-- **Filter by Category** — Browse products by category (Clothes, Shoes, Watches, etc.) with pagination support.
-- **Product Detail** — Individual product page with full description, price, stock status, and related products from the same category.
+#### Duyệt Sản Phẩm
+- **Trang chủ** — Hiển thị sản phẩm mới nhất (sắp xếp `releaseDate DESC`) và sản phẩm cũ nhất (`releaseDate ASC`) trong các section riêng biệt.
+- **Danh sách sản phẩm** — Xem toàn bộ catalogue có hỗ trợ tìm kiếm và lọc danh mục. Phân trang 8 sản phẩm/trang.
+- **Tìm kiếm theo tên** — Tìm kiếm LIKE trên tên và mô tả sản phẩm.
+- **Lọc theo danh mục** — Duyệt sản phẩm theo từng nhóm (Quần áo, Giày dép, Đồng hồ...) có phân trang.
+- **Chi tiết sản phẩm** — Trang riêng với mô tả đầy đủ, giá, tình trạng kho và các sản phẩm liên quan cùng danh mục.
 
-#### User Account
-- **Registration** — Create a new account with username, email, address, phone, and password. Password confirmation validated client-side and server-side.
-- **Login** — Authenticate with username + password. Credentials checked against `active = 1` accounts in the database.
-- **Remember Me** — Optional 30-day cookie-based credential persistence (`cuser`, `cpass`, `cremember`).
-- **Logout** — Invalidates the HTTP session and clears the cart.
-- **Edit Account** — Update personal information (address, phone, email, etc.).
-- **Forgot Password** — Enter email address to receive a system-generated random password via email.
-- **Change Password** — Reset to a new password from within the account settings.
+#### Tài Khoản Người Dùng
+- **Đăng ký** — Tạo tài khoản với username, email, địa chỉ, số điện thoại và mật khẩu. Xác nhận mật khẩu được kiểm tra cả phía client lẫn server.
+- **Đăng nhập** — Xác thực bằng username + password, chỉ cho phép tài khoản có `active = 1`.
+- **Ghi nhớ đăng nhập** — Lưu cookie 30 ngày nếu chọn "Remember Me" (`cuser`, `cpass`, `cremember`).
+- **Đăng xuất** — Huỷ `HttpSession` và xoá giỏ hàng khỏi bộ nhớ.
+- **Chỉnh sửa tài khoản** — Cập nhật địa chỉ, số điện thoại, email và các thông tin cá nhân khác.
+- **Quên mật khẩu** — Nhập email để nhận mật khẩu mới do hệ thống tự tạo gửi qua email.
+- **Đổi mật khẩu** — Thay đổi mật khẩu trực tiếp từ trang cài đặt tài khoản.
 
-#### Shopping Cart
-- **Add to Cart** — Any logged-in customer can add a product to the session-based cart.
-- **View Cart** — Lists all cart items with individual and total prices calculated server-side.
-- **Update Quantity** — Increase or decrease item quantity (capped by available stock).
-- **Remove Item** — Delete a specific item from the cart.
-- **Persistent across pages** — Cart is stored in `HttpSession` and survives navigation.
+#### Giỏ Hàng
+- **Thêm vào giỏ** — Khách hàng đã đăng nhập có thể thêm sản phẩm vào giỏ dựa trên session.
+- **Xem giỏ hàng** — Liệt kê tất cả sản phẩm trong giỏ kèm đơn giá và tổng tiền được tính phía server.
+- **Cập nhật số lượng** — Tăng hoặc giảm số lượng từng sản phẩm (giới hạn bởi tồn kho thực tế).
+- **Xoá sản phẩm** — Xoá từng item khỏi giỏ hàng.
+- **Duy trì qua các trang** — Giỏ hàng lưu trong `HttpSession`, không mất khi điều hướng giữa các trang.
 
-#### Checkout & Orders
-- **Checkout Page** — Review cart, enter delivery notes.
-- **Place Order** — Creates an `Order` record and individual `OrderDetail` records. Stock is decremented automatically.
-- **Order Confirmation** — Displays a "Thank You" page after successful order placement.
-- **Cart Reset** — Cart is cleared from the session after successful checkout.
+#### Thanh Toán & Đặt Hàng
+- **Trang checkout** — Xem lại giỏ hàng, nhập ghi chú giao hàng.
+- **Đặt hàng** — Tạo bản ghi `Order` và các `OrderDetail` tương ứng. Tồn kho sản phẩm tự động giảm sau khi đặt.
+- **Xác nhận đơn hàng** — Hiển thị trang "Thank You" sau khi đặt hàng thành công.
+- **Reset giỏ hàng** — Giỏ hàng được xoá khỏi session sau khi checkout thành công.
 
-### 9.2 Admin Features
+### 9.2 Chức Năng Admin
 
-#### Customer Management (`/managerAccount`)
-- View all registered customer accounts in a paginated table (3 per page).
-- Activate or deactivate customer accounts.
-- Edit customer details directly from the admin panel.
-- Create new customer accounts manually.
+#### Quản Lý Khách Hàng (`/managerAccount`)
+- Xem toàn bộ tài khoản khách hàng dạng bảng phân trang (3 tài khoản/trang).
+- Kích hoạt hoặc vô hiệu hoá tài khoản khách hàng.
+- Chỉnh sửa thông tin tài khoản trực tiếp từ admin panel.
+- Tạo mới tài khoản khách hàng thủ công.
 
 #### Dashboard (`/dashboard`)
-- Overview statistics (orders, customers, etc.) via `DashboardDAO`.
+- Xem thống kê tổng quan: số đơn hàng, số khách hàng, doanh thu... thông qua `DashboardDAO`.
 
 ---
 
 ## 10. URL Routes & Controllers
 
-### Public Routes
+### Routes Công Khai (không cần đăng nhập)
 
-| Method | URL | Controller | Description |
-|--------|-----|-----------|-------------|
-| GET | `/home` | `HomeServlet` | Homepage with newest & oldest products |
-| GET | `/login` | `LoginServlet` | Show login form |
-| POST | `/login` | `LoginServlet` | Process login credentials |
-| GET | `/logout` | `LogoutServlet` | Logout and invalidate session |
-| GET | `/user-register` | `UserRegisterController` | Show registration form |
-| POST | `/user-register` | `UserRegisterController` | Process new account creation |
-| GET | `/forgot-password` | `ForgotPasswordServlet` | Show forgot password form |
-| POST | `/forgot-password` | `ForgotPasswordServlet` | Send recovery email |
-| GET | `/reset` | `resetPasswordController` | Show reset password form |
-| POST | `/reset` | `resetPasswordController` | Process password reset |
-| GET | `/product-list` | `SearchController` | Product listing, search, category filter |
-| GET | `/product-detail` | `ProductDetailController` | Single product detail page |
+| Method | URL | Controller | Mô tả |
+|--------|-----|-----------|-------|
+| GET | `/home` | `HomeServlet` | Trang chủ: sản phẩm mới & cũ nhất |
+| GET | `/login` | `LoginServlet` | Hiển thị form đăng nhập |
+| POST | `/login` | `LoginServlet` | Xử lý thông tin đăng nhập |
+| GET | `/logout` | `LogoutServlet` | Đăng xuất, huỷ session |
+| GET | `/user-register` | `UserRegisterController` | Hiển thị form đăng ký |
+| POST | `/user-register` | `UserRegisterController` | Xử lý tạo tài khoản mới |
+| GET | `/forgot-password` | `ForgotPasswordServlet` | Hiển thị form quên mật khẩu |
+| POST | `/forgot-password` | `ForgotPasswordServlet` | Gửi email khôi phục mật khẩu |
+| GET | `/reset` | `resetPasswordController` | Hiển thị form đặt lại mật khẩu |
+| POST | `/reset` | `resetPasswordController` | Xử lý đặt lại mật khẩu |
+| GET | `/product-list` | `SearchController` | Danh sách sản phẩm, tìm kiếm, lọc danh mục |
+| GET | `/product-detail` | `ProductDetailController` | Trang chi tiết 1 sản phẩm |
 
-### Authenticated Customer Routes
+### Routes Yêu Cầu Đăng Nhập (Khách Hàng)
 
-| Method | URL | Controller | Description |
-|--------|-----|-----------|-------------|
-| GET/POST | `/add-to-cart` | `AddToCartServlet` | Add product to session cart |
-| GET | `/carts` | `CartController` | View shopping cart |
-| POST | `/update-quantity` | `UpdateCartQuantityController` | Update item quantity |
-| GET | `/delete-cart` | `DeleteCartController` | Remove item from cart |
-| GET/POST | `/checkout` | `CheckOutController` | Checkout page & place order |
-| GET/POST | `/thank` | `ThankController` | Order success confirmation |
+| Method | URL | Controller | Mô tả |
+|--------|-----|-----------|-------|
+| GET/POST | `/add-to-cart` | `AddToCartServlet` | Thêm sản phẩm vào giỏ hàng session |
+| GET | `/carts` | `CartController` | Xem giỏ hàng |
+| POST | `/update-quantity` | `UpdateCartQuantityController` | Cập nhật số lượng sản phẩm trong giỏ |
+| GET | `/delete-cart` | `DeleteCartController` | Xoá sản phẩm khỏi giỏ |
+| GET/POST | `/checkout` | `CheckOutController` | Trang thanh toán & đặt hàng |
+| GET/POST | `/thank` | `ThankController` | Xác nhận đặt hàng thành công |
 
-### Admin Routes
+### Routes Admin (Yêu cầu `role_admin`)
 
-| Method | URL | Controller | Description |
-|--------|-----|-----------|-------------|
-| GET/POST | `/managerAccount` | `ManagerAccountController` | Customer management table |
-| GET/POST | `/edit-account` | `EditAccountController` | Edit a specific account |
-| GET | `/dashboard` | `DashboardServlet` | Admin dashboard overview |
+| Method | URL | Controller | Mô tả |
+|--------|-----|-----------|-------|
+| GET/POST | `/managerAccount` | `ManagerAccountController` | Bảng quản lý khách hàng |
+| GET/POST | `/edit-account` | `EditAccountController` | Chỉnh sửa tài khoản cụ thể |
+| GET | `/dashboard` | `DashboardServlet` | Tổng quan admin dashboard |
 
 ---
 
-## 11. Authentication & Authorization
+## 11. Xác Thực & Phân Quyền
 
-### Login Flow
+### Luồng Đăng Nhập
 
 ```
-User submits /login (POST)
+Người dùng submit /login (POST)
        │
        ▼
 DAO.check(username, password)
   → SELECT * FROM Account WHERE Username=? AND Password=? AND active=1
        │
-       ├── Not found → Redirect /login with error message
+       ├── Không tìm thấy → Redirect /login + hiển thị thông báo lỗi
        │
-       └── Found → Store Account in HttpSession("account")
+       └── Tìm thấy → Lưu Account object vào HttpSession("account")
                        │
                        ├── RoleID == 1 (Admin)
                        │     → Set session("role_admin") = "yes"
-                       │     → Redirect to /managerAccount
+                       │     → Redirect đến /managerAccount
                        │
-                       └── RoleID == 2 (Customer)
-                             → Redirect to /home
+                       └── RoleID == 2 (Khách hàng)
+                             → Redirect đến /home
 ```
 
-### Session Structure
+### Cấu Trúc Session
 
-| Session Key | Type | Description |
-|-------------|------|-------------|
-| `account` | `Account` | Logged-in user object |
-| `carts` | `LinkedHashMap<String, Cart>` | Shopping cart (productId → Cart) |
-| `role_admin` | `String` | `"yes"` if the user is an admin |
+| Session Key | Kiểu | Mô tả |
+|-------------|------|-------|
+| `account` | `Account` | Object tài khoản của người dùng đang đăng nhập |
+| `carts` | `LinkedHashMap<String, Cart>` | Giỏ hàng (productId → Cart object) |
+| `role_admin` | `String` | Giá trị `"yes"` nếu tài khoản là Admin |
 
-### Cookie-Based Remember Me
+### Cookie Ghi Nhớ Đăng Nhập
 
-When "Remember Me" is checked on login:
-- `cuser` cookie — stores username, expires in 30 days
-- `cpass` cookie — stores password, expires in 30 days
-- `cremember` cookie — stores `"1"` flag, expires in 30 days
+Khi người dùng tick vào "Remember Me":
+- Cookie `cuser` — lưu username, hết hạn sau 30 ngày
+- Cookie `cpass` — lưu password, hết hạn sau 30 ngày
+- Cookie `cremember` — lưu cờ `"1"`, hết hạn sau 30 ngày
 
-On next visit, `LoginServlet` reads these cookies and pre-fills or auto-authenticates the form.
+Lần truy cập tiếp theo, `LoginServlet` đọc các cookie này để tự điền hoặc tự xác thực lại form.
 
-### Authorization Checks
+### Kiểm Tra Phân Quyền
 
-Controllers manually check session attributes:
+Các controller tự kiểm tra session attribute thủ công:
 
 ```java
-// Check if user is logged in
+// Kiểm tra đã đăng nhập chưa
 if (session.getAttribute("account") == null) {
     response.sendRedirect("login");
     return;
 }
 
-// Check if user is admin
+// Kiểm tra có phải admin không
 if (session.getAttribute("role_admin") == null) {
     response.sendRedirect("home");
     return;
 }
 ```
 
-### Password Recovery Flow
+### Luồng Khôi Phục Mật Khẩu
 
 ```
-1. User visits /forgot-password and submits their registered email
-2. ForgotPasswordServlet queries the database for an account with that email
-3. If found:
-   a. Generates a random password (Base64-encoded random bytes)
-   b. Updates the account's password in the database
-   c. Sends an email via Gmail SMTP (SendMailHelper) with the new password
-4. User receives the new password and can log in, then change it
+1. Người dùng vào /forgot-password và nhập email đã đăng ký
+2. ForgotPasswordServlet truy vấn database tìm tài khoản có email đó
+3. Nếu tìm thấy:
+   a. Tạo mật khẩu ngẫu nhiên (mã hoá Base64)
+   b. Cập nhật mật khẩu mới vào database
+   c. Gửi email qua Gmail SMTP (SendMailHelper) chứa mật khẩu mới
+4. Người dùng nhận email, đăng nhập bằng mật khẩu mới rồi tự đổi lại
 ```
 
 ---
 
-## 12. Shopping Cart System
+## 12. Hệ Thống Giỏ Hàng
 
-The cart is entirely session-based — no database persistence until checkout.
+Giỏ hàng hoàn toàn lưu trong session — không persist vào database cho đến khi checkout.
 
-### Cart Data Structure
+### Cấu Trúc Dữ Liệu Giỏ Hàng
 
 ```java
-// Stored in HttpSession
+// Lưu trong HttpSession với key "carts"
 LinkedHashMap<String, Cart> carts = new LinkedHashMap<>();
-// Key: productId (String)
+// Key:   productId (String)
 // Value: Cart object { Product product, int quantity }
 ```
 
-### Cart Operations
+### Các Thao Tác Trên Giỏ Hàng
 
-| Operation | Controller | Logic |
-|-----------|-----------|-------|
-| **Add** | `AddToCartServlet` | If product already in cart → increment quantity; else → add new entry |
-| **View** | `CartController` | Load cart from session, calculate per-item and total price |
-| **Update** | `UpdateCartQuantityController` | Adjust quantity for a given productId |
-| **Remove** | `DeleteCartController` | Remove entry from the LinkedHashMap |
-| **Checkout** | `CheckOutController` | Create DB records, deduct stock, clear cart from session |
+| Thao tác | Controller | Logic xử lý |
+|----------|-----------|-------------|
+| **Thêm** | `AddToCartServlet` | Nếu sản phẩm đã có → tăng số lượng; chưa có → tạo entry mới |
+| **Xem** | `CartController` | Đọc giỏ từ session, tính tiền từng sản phẩm và tổng tiền |
+| **Cập nhật** | `UpdateCartQuantityController` | Thay đổi số lượng theo productId |
+| **Xoá** | `DeleteCartController` | Xoá entry khỏi `LinkedHashMap` |
+| **Checkout** | `CheckOutController` | Tạo bản ghi DB, trừ tồn kho, xoá giỏ khỏi session |
 
-### Total Price Calculation (CartController)
+### Cách Tính Tổng Tiền (CartController)
 
 ```java
 double totalMoney = 0;
@@ -612,55 +621,56 @@ request.setAttribute("totalMoney", totalMoney);
 
 ## 13. Admin Panel
 
-### Customer Management (`ManagerAccountController`)
+### Quản Lý Khách Hàng (`ManagerAccountController`)
 
-- Lists all accounts from the `Account` table
-- **Pagination:** 3 accounts per page (configurable in `AcountDAO`)
-- **Search/filter** support
-- Buttons to **edit** or **deactivate** each account
-- Admin can manually **create** new customer accounts
+- Liệt kê toàn bộ tài khoản từ bảng `Account`
+- **Phân trang:** 3 tài khoản/trang (có thể tuỳ chỉnh trong `AcountDAO`)
+- Hỗ trợ tìm kiếm / lọc theo từ khoá
+- Nút **Sửa** và **Vô hiệu hoá** cho từng tài khoản
+- Admin có thể **Tạo mới** tài khoản khách hàng thủ công
 
 ### Dashboard (`DashboardServlet`)
 
-The dashboard provides a high-level overview using `DashboardDAO`:
-- Total number of customers
-- Total number of orders
-- Revenue summary
-- Recent activity
+Dashboard cung cấp cái nhìn tổng quan thông qua `DashboardDAO`:
+- Tổng số khách hàng đã đăng ký
+- Tổng số đơn hàng đã đặt
+- Thống kê doanh thu
+- Các hoạt động gần đây
 
-### Access Control
+### Kiểm Soát Truy Cập
 
-Admin pages check `session.getAttribute("role_admin")`. If the user is not an admin, they are redirected to `/home`.
+Các trang admin kiểm tra `session.getAttribute("role_admin")`. Nếu người dùng không phải admin, hệ thống sẽ redirect về `/home`.
 
 ---
 
-## 14. Email Service
+## 14. Dịch Vụ Email
 
-Password recovery emails are sent via **Gmail SMTP**.
+Email khôi phục mật khẩu được gửi qua **Gmail SMTP**.
 
-### Configuration (`GoogleInfomation.java`)
+### Cấu Hình (`GoogleInfomation.java`)
 
 ```java
-// Edit these values before deploying
+// Thay đổi các giá trị này trước khi deploy
 public static final String EMAIL    = "your-email@gmail.com";
 public static final String PASSWORD = "your-app-password";
 ```
 
-> **Important:** Use a **Gmail App Password** (not your main Gmail password). Enable 2FA and generate an App Password under Google Account → Security → App Passwords.
+> **Quan trọng:** Sử dụng **Gmail App Password** (không phải mật khẩu Gmail thông thường). Bật 2FA trên tài khoản Google, sau đó tạo App Password tại Google Account → Security → App Passwords.
 
-### SendMailHelper
+### Sử Dụng SendMailHelper
 
 ```java
 SendMailHelper.sendEmailTo(
-    recipientEmail,    // destination address
-    subject,           // email subject
-    body               // HTML or plain-text body
+    recipientEmail,    // địa chỉ email nhận
+    subject,           // tiêu đề email
+    body               // nội dung (HTML hoặc plain-text)
 );
 ```
 
-**SMTP Settings:**
-| Property | Value |
-|----------|-------|
+**Cài đặt SMTP:**
+
+| Thuộc tính | Giá trị |
+|------------|---------|
 | Host | `smtp.gmail.com` |
 | Port | `587` |
 | Auth | `true` |
@@ -668,67 +678,67 @@ SendMailHelper.sendEmailTo(
 
 ---
 
-## 15. Frontend Design
+## 15. Giao Diện Frontend
 
-### Layout Structure
+### Cấu Trúc Layout
 
-Every page includes shared `header.jsp` and `footer.jsp` fragments via `<jsp:include>`.
+Mỗi trang đều include fragment `header.jsp` và `footer.jsp` dùng chung thông qua `<jsp:include>`:
 
 ```
 ┌──────────────────────────────┐
-│           header.jsp          │  ← Global navbar (logo, nav links, cart icon)
+│           header.jsp          │  ← Navbar toàn cục (logo, nav links, icon giỏ hàng)
 ├──────────────────────────────┤
 │                               │
-│       Page-specific JSP       │
-│       (home, products, etc.)  │
+│       Nội dung riêng từng     │
+│       trang (JSP page)        │
 │                               │
 ├──────────────────────────────┤
-│           footer.jsp          │  ← Links, social media, copyright
+│           footer.jsp          │  ← Links, mạng xã hội, bản quyền
 └──────────────────────────────┘
 ```
 
-### Color Scheme
+### Bảng Màu
 
-| Usage | Color |
-|-------|-------|
-| Primary text | `#1d1d1d` (near-black) |
-| Accent / CTA | `#fb774b` (orange) |
-| Background | `#ffffff` (white) |
-| Muted text | `#d8d8d8` (light gray) |
-| Star ratings | Gold yellow |
-| Badges | Bootstrap blue |
+| Vị trí | Màu sắc |
+|--------|---------|
+| Màu chữ chính | `#1d1d1d` (gần đen) |
+| Màu nhấn / CTA | `#fb774b` (cam) |
+| Nền trang | `#ffffff` (trắng) |
+| Chữ phụ | `#d8d8d8` (xám nhạt) |
+| Đánh giá sao | Vàng gold |
+| Badge | Xanh Bootstrap |
 
 ### Typography
 
-- **Font family:** Poppins (via Google Fonts)
-- Imported in each page: `@import url('https://fonts.googleapis.com/css?family=Poppins')`
+- **Font chính:** Poppins (Google Fonts)
+- Import trong mỗi trang: `@import url('https://fonts.googleapis.com/css?family=Poppins')`
 
 ### Responsive Breakpoints (Bootstrap 4)
 
-| Class suffix | Screen width |
-|-------------|-------------|
-| `-lg` | ≥ 992px (desktop) |
-| `-md` | ≥ 768px (tablet) |
-| `-sm` | ≥ 576px (large phone) |
-| (default) | < 576px (mobile) |
+| Suffix class | Độ rộng màn hình |
+|-------------|-----------------|
+| `-lg` | ≥ 992px (máy tính để bàn) |
+| `-md` | ≥ 768px (máy tính bảng) |
+| `-sm` | ≥ 576px (điện thoại lớn) |
+| (mặc định) | < 576px (điện thoại nhỏ) |
 
-### CSS Files
+### Danh Sách File CSS
 
-| File | Scope |
-|------|-------|
-| `header.css` | Navbar, logo, menu links, cart icon |
-| `home.css` | Hero section, product cards, star ratings |
-| `login.css` | Login form layout and inputs |
-| `signup.css` | Registration form styling |
-| `product.css` | Product detail page |
-| `cart.css` | Cart table and summary box |
-| `footer.css` | Footer columns and social links |
+| File | Phạm vi áp dụng |
+|------|----------------|
+| `header.css` | Navbar, logo, menu, icon giỏ hàng |
+| `home.css` | Khu hero, card sản phẩm, sao đánh giá |
+| `login.css` | Layout và input form đăng nhập |
+| `signup.css` | Giao diện form đăng ký |
+| `product.css` | Trang chi tiết sản phẩm |
+| `cart.css` | Bảng giỏ hàng và hộp tổng tiền |
+| `footer.css` | Cột footer và icon mạng xã hội |
 
 ---
 
-## 16. Configuration Reference
+## 16. Cấu Hình Hệ Thống
 
-### Database Connection (`src/java/dal/DBContext.java`)
+### Kết Nối Database (`src/java/dal/DBContext.java`)
 
 ```java
 private static final String URL      = "jdbc:sqlserver://localhost:1433;databaseName=BoostYourStyleDB";
@@ -737,62 +747,62 @@ private static final String PASSWORD = "123";
 private static final String DRIVER   = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 ```
 
-Change these values to match your local SQL Server setup.
+Chỉnh sửa các giá trị này để phù hợp với cấu hình SQL Server trên máy của bạn.
 
-### Tomcat Deployment Context (`web/WEB-INF/context.xml`)
+### Deployment Context của Tomcat (`web/WEB-INF/context.xml`)
 
 ```xml
 <Context path="/boostyourstyle" />
 ```
 
-The application is deployed at: `http://localhost:8080/boostyourstyle/`
+Ứng dụng được deploy tại: `http://localhost:8080/boostyourstyle/`
 
 ### Web Application Descriptor (`web/WEB-INF/web.xml`)
 
 ```xml
 <!-- Jakarta EE 6.0 -->
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee">
-    <!-- Filter: LoginFilter — guards /add.jsp and /add -->
-    <!-- Remaining servlet mappings are annotation-based (@WebServlet) -->
+    <!-- Filter: LoginFilter — bảo vệ /add.jsp và /add -->
+    <!-- Các servlet mapping còn lại dùng annotation @WebServlet -->
 </web-app>
 ```
 
-### Default Admin Account
+### Tài Khoản Admin Mặc Định
 
-After running the database script, a default admin account should be seeded:
+Sau khi chạy script database, một tài khoản admin sẽ được seed sẵn:
 
-| Field | Value |
-|-------|-------|
-| RoleID | `1` (Admin) |
-| active | `1` |
+| Trường | Giá trị |
+|--------|---------|
+| `RoleID` | `1` (Admin) |
+| `active` | `1` |
 
-Check `database/BoostYourStyleDB.sql` for the default credentials.
-
----
-
-## 17. Team Members
-
-This project was developed as a team assignment for **PRJ301 — Java Web Application Development** at **FPT University, Spring 2026 semester (SE1928)**.
-
-| Member | Role |
-|--------|------|
-| Team Member 1 | Backend / Controllers |
-| Team Member 2 | Frontend / JSP Views |
-| Team Member 3 | Database Design / DAOs |
-| Team Member 4 | Authentication / Security |
-| Team Member 5 | Integration & Testing |
+Kiểm tra file `database/BoostYourStyleDB.sql` để xem thông tin đăng nhập mặc định.
 
 ---
 
-## Notes & Known Limitations
+## 17. Thành Viên Nhóm
 
-- **Passwords are stored as plain text.** In production, use `BCrypt` or `PBKDF2` for password hashing.
-- **Database credentials are hardcoded** in `DBContext.java`. Use environment variables or a properties file for production deployments.
-- **Gmail credentials are hardcoded** in `GoogleInfomation.java`. Move to environment variables before deploying.
-- **Cart is session-based** — cart contents are lost if the server restarts or the session expires.
-- **LoginFilter is partially disabled** — authentication enforcement should be reviewed before production use.
-- **No CSRF protection** — consider adding CSRF tokens to all POST forms.
-- **No input sanitization for XSS** — JSP pages should use `<c:out>` or JSTL escaping for all user-controlled data.
+Dự án được phát triển bởi nhóm sinh viên trong môn học **PRJ301 — Phát Triển Ứng Dụng Web Java** tại **Đại học FPT, kỳ Spring 2026 (SE1928)**.
+
+| Thành viên | Vai trò |
+|-----------|---------|
+| Thành viên 1 | Backend / Controllers |
+| Thành viên 2 | Frontend / JSP Views |
+| Thành viên 3 | Database Design / DAOs |
+| Thành viên 4 | Authentication / Security |
+| Thành viên 5 | Integration & Testing |
+
+---
+
+## Lưu Ý & Hạn Chế Hiện Tại
+
+- **Mật khẩu lưu dạng plain-text.** Trong môi trường production, cần dùng `BCrypt` hoặc `PBKDF2` để hash mật khẩu.
+- **Thông tin kết nối database bị hardcode** trong `DBContext.java`. Nên dùng biến môi trường hoặc file `.properties` cho production.
+- **Thông tin Gmail bị hardcode** trong `GoogleInfomation.java`. Cần chuyển sang biến môi trường trước khi deploy.
+- **Giỏ hàng lưu trong session** — nội dung giỏ hàng sẽ mất nếu server restart hoặc session hết hạn.
+- **LoginFilter chưa được bật đầy đủ** — cần xem xét lại cơ chế kiểm soát truy cập trước khi đưa lên production.
+- **Chưa có CSRF protection** — nên thêm CSRF token cho tất cả form POST.
+- **Chưa có sanitization cho XSS** — các JSP nên dùng `<c:out>` hoặc JSTL escaping cho mọi dữ liệu do người dùng nhập.
 
 ---
 
